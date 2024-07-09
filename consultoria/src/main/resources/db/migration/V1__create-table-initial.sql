@@ -1,10 +1,3 @@
--- Drop das tabelas, caso existam
-DROP TABLE IF EXISTS "feedbacks";
-DROP TABLE IF EXISTS "relatorio_de_consultoria";
-DROP TABLE IF EXISTS "consultas";
-DROP TABLE IF EXISTS "clientes";
-DROP TABLE IF EXISTS "consultores" CASCADE;
-
 -- Criação das tabelas
 
 CREATE TABLE "clientes" (
@@ -16,18 +9,20 @@ CREATE TABLE "clientes" (
     "telefone" varchar(15) NOT NULL,
     "email" varchar(100) NOT NULL UNIQUE,
     "senha" varchar(300) NOT NULL,
+    "tipo_de_usuario" varchar(100),
     "consultor_id" int NOT NULL
 );
 
 CREATE TABLE "consultores" (
     "id_consultor" serial PRIMARY KEY,
+    "nome_consultor" varchar (50),
     "data_cadastro" date NOT NULL,
     "telefone" varchar(15) NOT NULL,
     "email" varchar(100) NOT NULL UNIQUE,
     "senha" varchar(300) NOT NULL,
-    "data_de_nascimento" date NOT NULL,
     "especializacao" varchar(500),
-    "experiencia" varchar(500)
+    "experiencia" varchar(500),
+    "tipo_de_usuario" varchar(09)
 );
 
 CREATE TABLE "consultas" (
@@ -40,7 +35,7 @@ CREATE TABLE "consultas" (
 
 CREATE TABLE "relatorio_de_consultoria" (
     "id_relatorio_de_consultoria" serial PRIMARY KEY,
-    "consulta_id" int NOT NULL,
+    "id_consulta" int NOT NULL,
     "id_cliente" int NOT NULL,
     "id_consultor" int NOT NULL
 );
@@ -63,6 +58,6 @@ ALTER TABLE "relatorio_de_consultoria" ADD FOREIGN KEY ("id_cliente") REFERENCES
 
 ALTER TABLE "relatorio_de_consultoria" ADD FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor");
 
-ALTER TABLE "relatorio_de_consultoria" ADD FOREIGN KEY ("consulta_id") REFERENCES "consultas" ("id_consulta");
+ALTER TABLE "relatorio_de_consultoria" ADD FOREIGN KEY ("id_consulta") REFERENCES "consultas" ("id_consulta");
 
 ALTER TABLE "feedbacks" ADD FOREIGN KEY ("id_cliente") REFERENCES "clientes" ("id_cliente");
