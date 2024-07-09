@@ -9,8 +9,8 @@ CREATE TABLE "clientes" (
     "telefone" varchar(15) NOT NULL,
     "email" varchar(100) NOT NULL UNIQUE,
     "senha" varchar(300) NOT NULL,
-    "tipo_de_usuario" varchar(100),
-    "consultor_id" int NOT NULL
+    "tipo_de_usuario" varchar(9),
+    "id_consultor" int NOT NULL
 );
 
 CREATE TABLE "consultores" (
@@ -48,7 +48,7 @@ CREATE TABLE "feedbacks" (
 );
 
 -- Adicionar chaves estrangeiras
-ALTER TABLE "clientes" ADD FOREIGN KEY ("consultor_id") REFERENCES "consultores" ("id_consultor");
+ALTER TABLE "clientes" ADD FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor");
 
 ALTER TABLE "consultas" ADD FOREIGN KEY ("id_cliente") REFERENCES "clientes" ("id_cliente");
 
