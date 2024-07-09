@@ -42,11 +42,10 @@ public class Clientes {
 //    private Consultor idConsultor;
 
 
-    public Clientes(int idCliente, String nomeEmpresa, String nomeResponsavel,
-                    String cnpj, Date dataCadastro, String telefone, String email, String senha,
+    public Clientes(String nomeEmpresa, String nomeResponsavel, String cnpj,
+                    Date dataCadastro, String telefone, String email, String senha,
                     String tipoDeUsuario) {
 
-        this.idCliente = idCliente;
         this.nomeEmpresa = nomeEmpresa;
         this.nomeResponsavel = nomeResponsavel;
         this.cnpj = cnpj;
