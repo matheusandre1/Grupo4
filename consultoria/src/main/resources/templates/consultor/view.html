@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Consultor</title>
+</head>
+<body>
+    <div>
+        <h1>Detalhes do Consultor</h1>
+        <p><strong>Nome:</strong> <span th:text="${consultor.nomeConsultor}"></span></p>
+        <p><strong>Especialização:</strong> <span th:text="${consultor.especializacao}"></span></p>
+        <p><strong>Experiência:</strong> <span th:text="${consultor.experiencia}"></span></p>
+        <p><strong>Telefone:</strong> <span th:text="${consultor.telefone}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${consultor.email}"></span></p>
+        <p><strong>Data de Cadastro:</strong> <span th:text="${consultor.dataCadastro}"></span></p>
+        <a th:href="@{/consultores}">Voltar</a>
+    </div>
+</body>
+</html>

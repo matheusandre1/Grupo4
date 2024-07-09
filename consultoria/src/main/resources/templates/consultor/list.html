@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista dos Consultores</title>
+</head>
+<body>
+    <div>
+        <h1>Lista de Consultores</h1>
+        <a th:href="@{/consultores/novo}">Novo Consultor</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Especialização</th>
+                    <th>Experiência</th>
+                    <th>Contato</th>
+                    <th>Data de Cadastro</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="consultor : ${consultores}">
+                    <td th:text="${consultor.nomeConsultor}"></td>
+                    <td th:text="${consultor.especializacao}"></td>
+                    <td th:text="${consultor.experiencia}"></td>
+                    <td th:text="${consultor.telefone}"></td>
+                    <td th:text="${consultor.dataCadastro}"></td>
+                    <td>
+                        <a th:href="@{/consultores/visualizar/{idConsultor}(idConsultor=${consultor.idConsultor})}">Visualizar</a>
+                        <a th:href="@{/consultores/editar/{idConsultor}(idConsultor=${consultor.idConsultor})}">Editar</a>
+                        <a th:href="@{/consultores/deletar/{idConsultor}(idConsultor=${consultor.idConsultor})}">Deletar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

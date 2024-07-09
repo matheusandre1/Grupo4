@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário do Consultor</title>
+</head>
+<body>
+    <div>
+        <h2>Formulário do Consultor</h2>
+        <form th:action="@{/consultores}" th:object="${consultor}" method="post">
+            <input type="hidden" th:field="*{idConsultor}">
+            <div>
+                <label for="nomeConsultor">Nome:</label>
+                <input type="text" th:field="*{nomeConsultor}" required>
+            </div>
+            <div>
+                <label for="especializacao">Especialização:</label>
+                <input type="text" th:field="*{especializacao}" required>
+            </div>
+            <div>
+                <label for="experiencia">Experiência:</label>
+                <input type="text" th:field="*{experiencia}" required>
+            </div>
+            <div>
+                <label for="telefone">Telefone:</label>
+                <input type="text" th:field="*{telefone}" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" th:field="*{email}" required>
+            </div>
+            <div>
+                <label for="senha">Senha:</label>
+                <input type="text" th:field="*{senha}" required>
+            </div>
+            <div>
+                <button type="submit">Salvar</button>
+            </div>
+        </form>
+        <a th:href="@{/consultores}">Voltar</a>
+    </div>
+</body>
+</html>
