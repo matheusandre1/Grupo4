@@ -19,7 +19,7 @@ public class Clientes {
     @Column(name = "nome_responsavel", length = 100, nullable = false)
     private String nomeResponsavel;
 
-    @Column(name = "cnpj", length = 14, unique = true, nullable = false)
+    @Column(name = "cnpj", length = 20, unique = true, nullable = false)
     private String cnpj;
 
     @Column(name = "data_cadastro", nullable = false)

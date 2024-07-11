@@ -4,7 +4,7 @@ CREATE TABLE "clientes" (
     "id_cliente" serial PRIMARY KEY,
     "nome_empresa" varchar(100) NOT NULL UNIQUE,
     "nome_responsavel" varchar(100) NOT NULL UNIQUE,
-    "cnpj" varchar(14) NOT NULL UNIQUE,
+    "cnpj" varchar(20) NOT NULL UNIQUE,
     "data_cadastro" timestamp NOT NULL,
     "telefone" varchar(15) NOT NULL,
     "email" varchar(100) NOT NULL UNIQUE,
@@ -13,7 +13,7 @@ CREATE TABLE "clientes" (
     "id_consultor" int NOT NULL
 );
 
-CREATE TABLE "consultores" (
+CREATE TABLE "consultor" (
     "id_consultor" serial PRIMARY KEY,
     "nome_consultor" varchar (50),
     "data_cadastro" date NOT NULL,
@@ -48,15 +48,15 @@ CREATE TABLE "feedbacks" (
 );
 
 -- Adicionar chaves estrangeiras
-ALTER TABLE "clientes" ADD FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor");
+ALTER TABLE "clientes" ADD FOREIGN KEY ("id_consultor") REFERENCES "consultor" ("id_consultor");
 
 ALTER TABLE "consultas" ADD FOREIGN KEY ("id_cliente") REFERENCES "clientes" ("id_cliente");
 
-ALTER TABLE "consultas" ADD FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor");
+ALTER TABLE "consultas" ADD FOREIGN KEY ("id_consultor") REFERENCES "consultor" ("id_consultor");
 
 ALTER TABLE "relatorio_de_consultoria" ADD FOREIGN KEY ("id_cliente") REFERENCES "clientes" ("id_cliente");
 
-ALTER TABLE "relatorio_de_consultoria" ADD FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor");
+ALTER TABLE "relatorio_de_consultoria" ADD FOREIGN KEY ("id_consultor") REFERENCES "consultor" ("id_consultor");
 
 ALTER TABLE "relatorio_de_consultoria" ADD FOREIGN KEY ("id_consulta") REFERENCES "consultas" ("id_consulta");
 
