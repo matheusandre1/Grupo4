@@ -2,10 +2,10 @@ package br.com.squad04.consultoria.model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
-@Table(name = "clientes")
+@Table(name = "templates/clientes")
 public class Clientes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,8 +22,7 @@ public class Clientes {
     private String cnpj;
 
     @Column(name = "data_cadastro", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataCadastro;
+    private LocalDate dataCadastro;
 
     @Column(name = "telefone", length = 15, nullable = false)
     private String telefone;
@@ -43,7 +42,7 @@ public class Clientes {
 
 
     public Clientes(String nomeEmpresa, String nomeResponsavel, String cnpj,
-                    Date dataCadastro, String telefone, String email, String senha,
+                    LocalDate dataCadastro, String telefone, String email, String senha,
                     String tipoDeUsuario) {
 
         this.nomeEmpresa = nomeEmpresa;
@@ -88,11 +87,11 @@ public class Clientes {
         this.cnpj = cnpj;
     }
 
-    public Date getDataCadastro() {
+    public LocalDate getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(Date dataCadastro) {
+    public void setDataCadastro(LocalDate dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 

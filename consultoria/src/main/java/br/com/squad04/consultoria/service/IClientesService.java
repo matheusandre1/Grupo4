@@ -1,16 +1,27 @@
+//package br.com.squad04.consultoria.service;
+//
+//import br.com.squad04.consultoria.model.Consultas;
+//
+//import java.util.List;
+//import java.util.Optional;
+
+//public interface ConsultasService {
+//    Consultas saveConsulta(Consultas consulta);
+//    List<Consultas> getAllConsultas();
+//    Optional<Consultas> getConsultaById(Long id);
+//    void deleteConsulta(Long id);
+//}
+
 package br.com.squad04.consultoria.service;
 
 import br.com.squad04.consultoria.model.Clientes;
-import org.springframework.http.ResponseEntity;
+
+import java.util.List;
+import java.util.Optional;
 
 public interface IClientesService {
-    ResponseEntity<?> cadastrarCliente(Clientes cliente);
-
-    Object recuperarClientes();
-
-    Clientes buscarCliente(int idCliente);
-
-    ResponseEntity<?> atualizarCliente(Clientes cliente);
-
-    ResponseEntity<?> deletarCliente(int idCliente);
+    Clientes saveCliente(Clientes cliente);
+    List<Clientes> getAllClientes();
+    Optional<Clientes> getClienteById(int id);
+    void deleteCliente(int id);
 }
