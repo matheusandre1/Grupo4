@@ -51,8 +51,8 @@ public class ConsultoresController {
 
     @GetMapping("editar/{idConsultor}")
     public String showUpdateForm(@PathVariable("idConsultor") long idConsultor, Model model){
-        Consultores consultor = consultoresService.getConsultorById(idConsultor).orElseThrow(() -> new IllegalArgumentException("ID do Consultor inválida: " + idConsultor));
-        model.addAttribute("consultor", consultor);
+        Consultores consultores = consultoresService.getConsultorById(idConsultor).orElseThrow(() -> new IllegalArgumentException("ID do Consultor inválida: " + idConsultor));
+        model.addAttribute("consultores", consultores);
         return "consultor/form";
     }
 
