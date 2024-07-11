@@ -8,7 +8,7 @@
 <body>
     <div>
         <h2>Formulário do Consultor</h2>
-        <form th:action="@{/consultores}" th:object="${consultor}" method="post">
+        <form th:action="@{/consultores}" th:object="${consultores}" method="post">
             <input type="hidden" th:field="*{idConsultor}">
             <div>
                 <label for="nomeConsultor">Nome:</label>
