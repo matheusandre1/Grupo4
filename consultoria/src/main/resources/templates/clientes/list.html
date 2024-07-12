@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista dos Clientes</title>
+</head>
+<body>
+<div>
+    <h1>Lista de Clientes</h1>
+    <a th:href="@{/clientes/novo}">Novo Cliente</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome da Empresa</th>
+            <th>Nome do Responsável</th>
+            <th>CNPJ</th>
+            <th>Data de Cadastro</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="cliente : ${clientes}">
+            <td th:text="${cliente.nomeEmpresa}"></td>
+            <td th:text="${cliente.nomeResponsavel}"></td>
+            <td th:text="${cliente.cnpj}"></td>
+            <td th:text="${cliente.dataCadastro}"></td>
+            <td th:text="${cliente.telefone}"></td>
+            <td th:text="${cliente.email}"></td>
+            <td>
+                <a th:href="@{/clientes/visualizar/{idCliente}(idCliente=${cliente.idCliente})}">Visualizar</a>
+                <a th:href="@{/clientes/editar/{idCliente}(idCliente=${cliente.idCliente})}">Editar</a>
+                <a th:href="@{/clientes/deletar/{idCliente}(idCliente=${cliente.idCliente})}">Deletar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

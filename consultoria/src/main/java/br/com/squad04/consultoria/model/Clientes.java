@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "templates/clientes")
+@Table(name = "clientes")
 public class Clientes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,10 +35,6 @@ public class Clientes {
 
     @Column(name = "tipo_de_usuario", length = 9, nullable = false)
     private String tipoDeUsuario;
-
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn (name = "id_consultor", referencedColumnName = "id_consultor")
-//    private Consultor idConsultor;
 
 
     public Clientes(String nomeEmpresa, String nomeResponsavel, String cnpj,

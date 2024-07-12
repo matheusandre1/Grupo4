@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil do Cliente</title>
+</head>
+<body>
+<div>
+    <h1>Detalhes do Cliente</h1>
+    <p><strong>Nome da empresa:</strong> <span th:text="${cliente.nomeEmpresa}"></span></p>
+    <p><strong>Nome do responsavel:</strong> <span th:text="${cliente.nomeResponsavel}"></span></p>
+    <p><strong>Cnpj:</strong> <span th:text="${cliente.cnpj}"></span></p>
+    <p><strong>Telefone:</strong> <span th:text="${cliente.telefone}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${cliente.email}"></span></p>
+    <p><strong>Data de Cadastro:</strong> <span th:text="${cliente.dataCadastro}"></span></p>
+    <a th:href="@{/clientes}">Voltar</a>
+</div>
+</body>
+</html>
