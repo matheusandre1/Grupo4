@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+  --cor-primaria: #171616; 
+  --cor-secundaria: #EDEDED; 
+  --azul-claro: #AFC1D0; 
+  --azul-escuro: #1C3F60; 
+  --verde-limao: #80FF00; 
+
+  --fonte-primaria: 'Rubik', Arial, sans-serif;
+  --fonte-secundaria: 'Roboto', Arial, sans-serif;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+div h1 {
+    margin-top: 90px;
+    font-family: var(--fonte-primaria);
+    
+}
+
+label{
+    font-family: var(--fonte-secundaria);
+    font-size: 17px;
+}
+
+.footer {
+  width: 100%;
+  margin-top: 90px;
+  padding: 20px;
+  background-color: var(--azul-escuro);
+  color: var(--cor-secundaria);
+  
+}
+
+.footer h5{
+  font-family: var(--fonte-primaria);
+}
+
+.footer li, .footer p{
+  font-family: var(--fonte-secundaria);
+}
+
+hr{
+  border-color: var(--cor-secundaria);
+}
+
+@media (max-width: 450px){
+    h1{
+        font-size: 25px; 
+    }
+    
+    h5{
+        font-size: 16px; 
+    }
+    
+    li{
+        font-size: 13px; 
+    }
+    
+    label{
+        font-size: 15px ;
+    }
+
+    .navbar-brand img {
+        width: 23px;
+        height: 23px;
+    }
+      
+    .navbar-toggler-icon{
+        width: 18px;
+        height: 18px;
+    }
+    
+    .navbar-brand span {
+        font-size: 18px;
+    }
+    
+    .navbar-nav .nav-item {
+        margin-bottom: 5px;
+    }
+
+    .btn-lg{
+        
+        font-size: 13px; 
+        padding: 8px 14px;
+    }
+    .footer .container {
+        flex-direction: column;
+        align-items: center;
+      }
+    
+      .footer .container div {
+        margin-bottom: 20px;
+      }
+    
+      .footer .container ul img {
+        width: 16px;
+      }
+    
+      .footer p {
+        font-size: 12px; 
+      }
+  }
+  
+  @media (min-width: 451px) and (max-width: 710px) {
+    .form-control.w-50 {
+      width: 100%;
+    }
+    .btn-lg {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .footer {
+      padding: 15px;
+    }
+    .footer .d-flex {
+      flex-direction: column;
+      align-items: center;
+    }
+    .footer ul {
+      padding: 0;
+    }
+  }
