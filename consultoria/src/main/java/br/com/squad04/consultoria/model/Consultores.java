@@ -13,6 +13,7 @@ public class Consultores{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idConsultor;
     private String nomeConsultor;
+    private String fotoNome;
     private String especializacao;
     private String experiencia;
     private String telefone;
@@ -33,6 +34,13 @@ public class Consultores{
     }
     public void setNomeConsultor(String nomeConsultor) {
         this.nomeConsultor = nomeConsultor;
+    }
+
+    public String getFotoNome() {
+        return fotoNome;
+    }
+    public void setFotoNome(String fotoNome) {
+        this.fotoNome = fotoNome;
     }
 
     public String getEspecializacao() {

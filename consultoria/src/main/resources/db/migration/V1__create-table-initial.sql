@@ -16,6 +16,7 @@ CREATE TABLE "clientes" (
 CREATE TABLE "consultores" (
     "id_consultor" serial PRIMARY KEY,
     "nome_consultor" varchar (50),
+    "foto_nome" varchar(100),
     "data_cadastro" date NOT NULL,
     "telefone" varchar(15) NOT NULL,
     "email" varchar(100) NOT NULL UNIQUE,
