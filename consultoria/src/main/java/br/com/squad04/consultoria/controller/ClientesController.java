@@ -3,70 +3,62 @@ package br.com.squad04.consultoria.controller;
 import br.com.squad04.consultoria.model.Clientes;
 import br.com.squad04.consultoria.service.IClientesService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
+@RequestMapping("/clientes")
 public class ClientesController {
 
     @Autowired
     private IClientesService iClientesService;
 
+
+    @GetMapping
+    public String getAllClientes(Model model) {
+        List<Clientes> clientes = iClientesService.getAllClientes();
+        model.addAttribute("clientes", clientes);
+        return "clientes/list";
+    }
+
+    @GetMapping("/novo")
+    public String showForm(Clientes cliente) {
+        return "clientes/form";
+    }
+
     @PostMapping("/clientes")
-    public ResponseEntity<String> cadastrarCliente(@RequestBody Clientes cliente) {
-        try {
-            ResponseEntity<?> resposta = iClientesService.cadastrarCliente(cliente);
-            // Verifica se o corpo da resposta não é nulo antes de chamá-lo
-            String responseBody = resposta.getBody() != null ? resposta.getBody().toString() : "";
-            return ResponseEntity.status(resposta.getStatusCode()).body(responseBody);
-        } catch (Exception e) {
-            // Log da exceção para fins de depuração
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro ao cadastrar o cliente.");
-        }
+    public String saveCliente(@ModelAttribute Clientes cliente) {
+        cliente.setDataCadastro(LocalDate.now());
+        iClientesService.saveCliente(cliente);
+        return "redirect:/clientes";
     }
 
-    @GetMapping("/clientes")
-    public ResponseEntity<ArrayList<Clientes>> listarClientes() {
-        ArrayList<Clientes> clientes= (ArrayList<Clientes>) iClientesService.recuperarClientes();
-        return ResponseEntity.ok(clientes);
+    @GetMapping("/visualizar/{idCliente}")
+    public String viewCliente(@PathVariable("idCliente") long idCliente, Model model) {
+        Clientes cliente = iClientesService.getClienteById(idCliente)
+                .orElseThrow(() -> new IllegalArgumentException("ID da Cliente inválido: " + idCliente));
+        model.addAttribute("cliente", cliente);
+        return "clientes/view";
     }
 
-    @GetMapping("cliente/{idCliente}")
-    public ResponseEntity<Clientes> buscarCliente(@PathVariable("idCliente") int idCliente) {
-        Clientes cliente = iClientesService.buscarCliente(idCliente);
-        if (cliente != null) {
-            return ResponseEntity.ok(cliente);
-        }else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-        }
+    @GetMapping("/editar/{idCliente}")
+    public String showUpdateForm(@PathVariable("idCliente") long idCliente, Model model) {
+        Clientes cliente = iClientesService.getClienteById(idCliente)
+                .orElseThrow(() -> new IllegalArgumentException("ID da Cliente inválido: " + idCliente));
+        model.addAttribute("cliente", cliente);
+        return "clientes/form";
     }
 
-    @PutMapping("/{idCliente}")
-    public ResponseEntity<String> atualizarCliente(@PathVariable("idCliente") int idCliente, @RequestBody Clientes cliente) {
-        try {
-            ResponseEntity<?> resposta = iClientesService.atualizarCliente(cliente);
-            String responseBody = resposta.getBody() != null ? resposta.getBody().toString() : "";
-            return ResponseEntity.status(resposta.getStatusCode()).body(responseBody);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro ao atualizar o cliente.");
-        }
+    @GetMapping("/deletar/{idCliente}")
+    public String deleteCliente(@PathVariable("idCliente") long idCliente) {
+        iClientesService.deleteCliente(idCliente);
+        return "redirect:/clientes";
     }
 
-    @DeleteMapping("/{idCliente}")
-    public ResponseEntity<String> deletarCliente(@PathVariable("idCliente") int idCliente) {
-        try {
-            ResponseEntity<?> resposta = iClientesService.deletarCliente(idCliente);
-            String responseBody = resposta.getBody() != null ? resposta.getBody().toString() : "";
-            return ResponseEntity.status(resposta.getStatusCode()).body(responseBody);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ocorreu um erro ao excluir o cliente.");
-        }
-    }
 }

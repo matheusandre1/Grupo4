@@ -2,7 +2,7 @@ package br.com.squad04.consultoria.model;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "clientes")
@@ -10,7 +10,7 @@ public class Clientes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cliente")
-    private int idCliente;
+    private long idCliente;
 
     @Column(name = "nome_empresa", length = 100, nullable = false)
     private String nomeEmpresa;
@@ -22,8 +22,7 @@ public class Clientes {
     private String cnpj;
 
     @Column(name = "data_cadastro", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dataCadastro;
+    private LocalDate dataCadastro;
 
     @Column(name = "telefone", length = 15, nullable = false)
     private String telefone;
@@ -37,14 +36,12 @@ public class Clientes {
     @Column(name = "tipo_de_usuario", length = 9, nullable = false)
     private String tipoDeUsuario;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn (name = "id_consultor", referencedColumnName = "id_consultor")
-//    private Consultor idConsultor;
-
+    @Column(name = "id_consultor", nullable = false)
+    private Long idConsultor;
 
     public Clientes(String nomeEmpresa, String nomeResponsavel, String cnpj,
-                    Date dataCadastro, String telefone, String email, String senha,
-                    String tipoDeUsuario) {
+                    LocalDate dataCadastro, String telefone, String email, String senha,
+                    String tipoDeUsuario, Long idConsultor) {
 
         this.nomeEmpresa = nomeEmpresa;
         this.nomeResponsavel = nomeResponsavel;
@@ -54,13 +51,14 @@ public class Clientes {
         this.email = email;
         this.senha = senha;
         this.tipoDeUsuario = tipoDeUsuario;
+        this.idConsultor = idConsultor;
     }
 
-    public int getIdCliente() {
+    public long getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(long idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -88,11 +86,11 @@ public class Clientes {
         this.cnpj = cnpj;
     }
 
-    public Date getDataCadastro() {
+    public LocalDate getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(Date dataCadastro) {
+    public void setDataCadastro(LocalDate dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 
@@ -126,5 +124,13 @@ public class Clientes {
 
     public void setTipoDeUsuario(String tipoDeUsuario) {
         this.tipoDeUsuario = tipoDeUsuario;
+    }
+
+    public Long getIdConsultor() {
+        return idConsultor;
+    }
+
+    public void setIdConsultor(Long idConsultor) {
+        this.idConsultor = idConsultor;
     }
 }
