@@ -22,6 +22,6 @@ import java.util.Optional;
 public interface IClientesService {
     Clientes saveCliente(Clientes cliente);
     List<Clientes> getAllClientes();
-    Optional<Clientes> getClienteById(int id);
-    void deleteCliente(int id);
+    Optional<Clientes> getClienteById(long id);
+    void deleteCliente(long id);
 }

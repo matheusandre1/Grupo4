@@ -10,7 +10,7 @@ CREATE TABLE "clientes" (
     "email" varchar(100) NOT NULL UNIQUE,
     "senha" varchar(300) NOT NULL,
     "tipo_de_usuario" varchar(9),
-    "id_consultor" int NOT NULL
+    "id_consultor" serial NOT NULL
 );
 
 CREATE TABLE "consultores" (

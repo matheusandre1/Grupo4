@@ -10,7 +10,7 @@ public class Clientes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_cliente")
-    private int idCliente;
+    private long idCliente;
 
     @Column(name = "nome_empresa", length = 100, nullable = false)
     private String nomeEmpresa;
@@ -36,10 +36,12 @@ public class Clientes {
     @Column(name = "tipo_de_usuario", length = 9, nullable = false)
     private String tipoDeUsuario;
 
+    @Column(name = "id_consultor", nullable = false)
+    private Long idConsultor;
 
     public Clientes(String nomeEmpresa, String nomeResponsavel, String cnpj,
                     LocalDate dataCadastro, String telefone, String email, String senha,
-                    String tipoDeUsuario) {
+                    String tipoDeUsuario, Long idConsultor) {
 
         this.nomeEmpresa = nomeEmpresa;
         this.nomeResponsavel = nomeResponsavel;
@@ -49,13 +51,14 @@ public class Clientes {
         this.email = email;
         this.senha = senha;
         this.tipoDeUsuario = tipoDeUsuario;
+        this.idConsultor = idConsultor;
     }
 
-    public int getIdCliente() {
+    public long getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(long idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -121,5 +124,13 @@ public class Clientes {
 
     public void setTipoDeUsuario(String tipoDeUsuario) {
         this.tipoDeUsuario = tipoDeUsuario;
+    }
+
+    public Long getIdConsultor() {
+        return idConsultor;
+    }
+
+    public void setIdConsultor(Long idConsultor) {
+        this.idConsultor = idConsultor;
     }
 }

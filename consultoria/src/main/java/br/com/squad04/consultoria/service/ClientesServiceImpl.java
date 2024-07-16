@@ -173,13 +173,18 @@ public class ClientesServiceImpl implements IClientesService {
         return clientesRepo.findAll();
     }
 
+//    @Override
+//    public Optional<Clientes> getClienteById(long id) {
+//        return Optional.empty();
+//    }
+
     @Override
-    public Optional<Clientes> getClienteById(int idCliente) {
+    public Optional<Clientes> getClienteById(long idCliente) {
         return clientesRepo.findById(idCliente);
     }
 
     @Override
-    public void deleteCliente(int idCliente) {
+    public void deleteCliente(long idCliente) {
         clientesRepo.deleteById(idCliente);
     }
 }

@@ -6,12 +6,13 @@
     <title>Formulário do Cliente</title>
 </head>
 <body>
+    
 <div>
     <h2>Formulário do Cliente</h2>
     <form th:action="@{/clientes}" th:object="${clientes}" method="post">
         <input type="hidden" th:field="*{idCliente}">
         <div>
-            <label for="idConsultor">Id do COnsultor:</label>
+            <label for="idConsultor">Id do Consultor:</label>
             <input type="text" th:field="*{idConsultor}" required>
         </div>
         <div>
