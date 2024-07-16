@@ -3,7 +3,7 @@
 CREATE TABLE "clientes" (
     "id_cliente" serial PRIMARY KEY,
     "nome_empresa" varchar(100) NOT NULL UNIQUE,
-    "nome_responsavel" varchar(100) NOT NULL UNIQUE,
+    "nome_responsavel" varchar(100) NOT NULL,
     "cnpj" varchar(14) NOT NULL UNIQUE,
     "data_cadastro" timestamp NOT NULL,
     "telefone" varchar(15) NOT NULL,

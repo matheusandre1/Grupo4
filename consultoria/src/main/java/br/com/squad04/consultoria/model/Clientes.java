@@ -54,6 +54,9 @@ public class Clientes {
         this.idConsultor = idConsultor;
     }
 
+    public Clientes() {
+    }
+
     public long getIdCliente() {
         return idCliente;
     }

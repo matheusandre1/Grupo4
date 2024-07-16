@@ -1,53 +1,116 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário do Cliente</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/formConsul.css">
+
 </head>
+
 <body>
-    
-<div>
-    <h2>Formulário do Cliente</h2>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" th:href="@{/}">
+            <img src="/images/Logo.png" width="30" height="30" alt="Logo">
+            <span>TechConsult</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class=" d-flex navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Consultorias em TI</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/consultores}">Consultores</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Agendamento</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                <li class="nav-item"><a id="botao-login" class="nav-link btn btn-primary btn-sm text-white"
+                                        href="#">Log in</a></li>
+                <li class="nav-item"><a id="botao-registro" class="nav-link btn btn-primary btn-sm text-white"
+                                        href="#">Registrar</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <h1 class="mb-3">Formulário do Cliente</h1>
     <form th:action="@{/clientes}" th:object="${clientes}" method="post">
         <input type="hidden" th:field="*{idCliente}">
         <div>
             <label for="idConsultor">Id do Consultor:</label>
-            <input type="text" th:field="*{idConsultor}" required>
+            <input class="form-control" type="text" th:field="*{idConsultor}" required>
         </div>
-        <div>
+        <div class="form-group">
             <label for="nomeEmpresa">Nome da empresa:</label>
-            <input type="text" th:field="*{nomeEmpresa}" required>
+            <input class="form-control" type="text" th:field="*{nomeEmpresa}" required>
         </div>
-        <div>
+        <div class="form-group">
             <label for="nomeResponsavel">Nome do responsável:</label>
-            <input type="text" th:field="*{nomeResponsavel}" required>
+            <input class="form-control" type="text" th:field="*{nomeResponsavel}" required>
         </div>
-        <div>
+        <div class="form-group">
             <label for="cnpj">Cnpj:</label>
-            <input type="text" th:field="*{cnpj}" required>
+            <input class="form-control" type="text" th:field="*{cnpj}" required>
         </div>
         <div>
             <!-- <label for="dataCadastro">Data de cadastro:</label> -->
-            <input type="hidden" th:field="*{dataCadastro}" >
+            <input type="hidden" th:field="*{dataCadastro}">
+            <input type="hidden" th:field="*{tipoDeUsuario}">
         </div>
-        <div>
+        <div class="form-group">
             <label for="telefone">Telefone:</label>
-            <input type="text" th:field="*{telefone}" required>
+            <input class="form-control" type="text" th:field="*{telefone}" required>
         </div>
-        <div>
+        <div class="form-group">
             <label for="email">Email:</label>
-            <input type="text" th:field="*{email}" required>
+            <input class="form-control" type="text" th:field="*{email}" required>
         </div>
-        <div>
+        <div class="form-group" >
             <label for="senha">Senha:</label>
-            <input type="text" th:field="*{senha}" required>
+            <input class="form-control" type="text" th:field="*{senha}" required>
         </div>
-        <div>
-            <button type="submit">Salvar</button>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-success btn px-4">Salvar</button>
+            <a th:href="@{/clientes}" class="btn btn-secondary btn px-4 mx-3">Voltar</a>
+
         </div>
     </form>
-    <a th:href="@{/clientes}">Voltar</a>
-</div>
+</div> <!-- Footer -->
+<footer class="footer">
+    <div class=" container d-flex justify-content-around">
+        <div>
+            <h5>Contato</h5>
+            <ul class="list-unstyled">
+                <li>Email: techconsult@tc.com</li>
+                <li>Telefone: +55 11 1234-5678</li>
+                <li>Endereço: Rua da Computação, nº 53. Bairro Internet</li>
+            </ul>
+        </div>
+        <div class="d-flex flex-column align-self-center">
+            <h5>Redes Sociais</h5>
+            <ul class="list-unstyled d-flex justify-content-between">
+                <li><a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank"><img
+                        src="/images/facebook.png" width="20" alt="Facebook"></a></li>
+                <li><a href="https://x.com/" target="_blank"><img src="/images/x.png" width="20" alt="X"></a></li>
+                <li><a href="https://www.instagram.com/" target="_blank"><img src="/images/instagram.png" width="20"
+                                                                              alt="Instagram"></a></li>
+                <li><a href="https://www.linkedin.com/" target="_blank"><img src="/images/linkedin.png" width="20"
+                                                                             alt="LinkedIn"></a></li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <p class="text-center">Copyright &copy 2024 Squad 4, Alguns direitos reservados.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
+
 </html>
