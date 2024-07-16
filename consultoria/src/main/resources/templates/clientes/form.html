@@ -11,6 +11,10 @@
     <form th:action="@{/clientes}" th:object="${clientes}" method="post">
         <input type="hidden" th:field="*{idCliente}">
         <div>
+            <label for="idConsultor">Id do COnsultor:</label>
+            <input type="text" th:field="*{idConsultor}" required>
+        </div>
+        <div>
             <label for="nomeEmpresa">Nome da empresa:</label>
             <input type="text" th:field="*{nomeEmpresa}" required>
         </div>
