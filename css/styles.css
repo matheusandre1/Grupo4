@@ -29,6 +29,42 @@ body {
   z-index: 1000;
 }
 
+#botao-login{
+  padding: 10px;
+  color: var(--azul-escuro);
+  background-color: var(--cor-secundaria);
+  margin: 0;
+  padding: 3px;
+  font-size: 15px;
+  margin-top: 5px;
+  border: 1px solid var(--azul-escuro);
+}
+
+#botao-registro{
+  padding: 10px;
+  color: var(--cor-secundaria);
+  background-color: var(--azul-escuro);
+  margin: 0;
+  padding: 3px;
+  font-size: 15px;
+  margin-top: 5px;
+  border: 1px solid var(--azul-escuro);
+}
+
+#botao-registro:hover, #botao-login:hover{
+  color: var(--cor-primaria);
+  background-color: var(--verde-limao);
+  border: 1px solid var(--verde-limao);
+}
+
+#botao-registro{
+  margin-left: 8px;
+}
+
+#lista:hover{
+  color: var(--verde-limao);
+}
+
 header {
   position: relative;
   width: 100%;
@@ -42,9 +78,11 @@ header img {
   object-position: center;
 }
 
+
 .carousel-item img {
   width: 50%;
   max-height: 300px;
+  border-radius: 5px;
 }
 
 .carousel-inner {
@@ -138,4 +176,89 @@ p{
 
 .footer h5{
   font-family: var(--fonte-primaria);
+}
+
+
+/* Tela de Login */
+
+
+.navbar-nav .nav-link {
+  font-size: 14px;
+}
+
+.login-box {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-box h2 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  font-size: 14px;
+}
+
+.form-check-label {
+  font-size: 14px;
+}
+
+.btn-block {
+  font-size: 14px;
+}
+
+.formulario{
+  margin-top: 20px;
+}
+
+/* Tela de Agendamento */
+
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+.agendamento {
+  margin-top: 40px;
+}
+
+h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+#agendamento-form .form-control,
+#agendamento-form button {
+  margin-bottom: 15px;
+}
+
+#agendamento-form button {
+  width: 100%;
+}
+
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #f4f4f4;
 }
