@@ -32,9 +32,10 @@ public class ClientesController {
         return "clientes/form";
     }
 
-    @PostMapping("/clientes")
+    @PostMapping
     public String saveCliente(@ModelAttribute Clientes cliente) {
         cliente.setDataCadastro(LocalDate.now());
+        cliente.setTipoDeUsuario("CLIENTES");
         iClientesService.saveCliente(cliente);
         return "redirect:/clientes";
     }
@@ -43,7 +44,7 @@ public class ClientesController {
     public String viewCliente(@PathVariable("idCliente") long idCliente, Model model) {
         Clientes cliente = iClientesService.getClienteById(idCliente)
                 .orElseThrow(() -> new IllegalArgumentException("ID da Cliente inválido: " + idCliente));
-        model.addAttribute("cliente", cliente);
+        model.addAttribute("clientes", cliente);
         return "clientes/view";
     }
 
@@ -51,7 +52,7 @@ public class ClientesController {
     public String showUpdateForm(@PathVariable("idCliente") long idCliente, Model model) {
         Clientes cliente = iClientesService.getClienteById(idCliente)
                 .orElseThrow(() -> new IllegalArgumentException("ID da Cliente inválido: " + idCliente));
-        model.addAttribute("cliente", cliente);
+        model.addAttribute("clientes", cliente);
         return "clientes/form";
     }
 
