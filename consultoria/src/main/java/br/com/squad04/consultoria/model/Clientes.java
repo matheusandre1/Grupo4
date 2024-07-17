@@ -39,6 +39,7 @@ public class Clientes {
     @Column(name = "id_consultor", nullable = false)
     private Long idConsultor;
 
+
     public Clientes(String nomeEmpresa, String nomeResponsavel, String cnpj,
                     LocalDate dataCadastro, String telefone, String email, String senha,
                     String tipoDeUsuario, Long idConsultor) {
@@ -118,6 +119,7 @@ public class Clientes {
     }
 
     public void setSenha(String senha) {
+
         this.senha = senha;
     }
 
