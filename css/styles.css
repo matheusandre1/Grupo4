@@ -106,9 +106,9 @@ header img {
   align-items: center;
   width: calc(33.333% - 20px); 
   margin-bottom: 20px; 
-  border: 1px solid #ddd;
+  border: 1px solid var(--cor-secundaria);
   padding: 10px;
-  background-color: #fff;
+  background-color: var(--cor-secundaria);
   border-radius: 5px;
 }
 
@@ -136,7 +136,7 @@ p{
 .consultor p {
   margin: 0;
   font-size: 14px;
-  color: #666;
+  color: var(--cor-primaria);
 }
 
 
@@ -188,10 +188,10 @@ p{
 
 .login-box {
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--cor-secundaria);
   border-radius: 5px;
-  background-color: #f9f9f9;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--cor-secundaria);
+  box-shadow: 0 0 10px var(--azul-claro);
 }
 
 .login-box h2 {
@@ -228,7 +228,7 @@ p{
 
 h2 {
   margin-bottom: 20px;
-  color: #333;
+  color: var(--cor-primaria);
 }
 
 .form-group label {
@@ -251,7 +251,7 @@ table {
 }
 
 table, th, td {
-  border: 1px solid #ddd;
+  border: 1px solid var(--cor-secundaria);
 }
 
 th, td {
@@ -260,5 +260,5 @@ th, td {
 }
 
 th {
-  background-color: #f4f4f4;
+  background-color: var(--cor-secundaria);
 }
