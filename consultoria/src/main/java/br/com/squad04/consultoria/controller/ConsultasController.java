@@ -1,59 +1,70 @@
 package br.com.squad04.consultoria.controller;
 
-import br.com.squad04.consultoria.model.Consultas;
-import br.com.squad04.consultoria.service.ConsultasService;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import br.com.squad04.consultoria.model.Clientes;
+import br.com.squad04.consultoria.model.Consultas;
+import br.com.squad04.consultoria.model.Consultores;
+import br.com.squad04.consultoria.service.ClientesService;
+import br.com.squad04.consultoria.service.ConsultasService;
+import br.com.squad04.consultoria.service.ConsultoresService;
 
 @Controller
 @RequestMapping("/consultas")
 public class ConsultasController {
-
     @Autowired
     private ConsultasService consultasService;
 
+    @Autowired
+    private ConsultoresService consultoresService;
+
+    @Autowired
+    private ClientesService clientesService;
+
     @GetMapping
-    public String getAllConsultas(Model model) {
+    public String getAllConsultas(Model model){
         List<Consultas> consultas = consultasService.getAllConsultas();
         model.addAttribute("consultas", consultas);
         return "consulta/list";
     }
 
     @GetMapping("/nova")
-    public String showForm(Consultas consulta) {
-        return "consulta/form";
-    }
+    public String showConsultaForm(Model model){
+        model.addAttribute("consultas", new Consultas());
+        
+        List<Consultores> consultor = consultoresService.getAllConsultores();
+        model.addAttribute("consultor", consultor);
 
+        List<Clientes> cliente = clientesService.getAllClientes();
+        model.addAttribute("cliente", cliente);
+
+        return "consulta/form";
+    } 
+    
     @PostMapping
-    public String saveConsulta(@ModelAttribute Consultas consulta) {
-        consulta.setDataHora(LocalDateTime.now());
+    public String saveConsultas(@ModelAttribute Consultas consulta){
         consultasService.saveConsulta(consulta);
         return "redirect:/consultas";
     }
 
-    @GetMapping("/visualizar/{idConsulta}")
-    public String viewConsulta(@PathVariable("idConsulta") long idConsulta, Model model) {
-        Consultas consulta = consultasService.getConsultaById(idConsulta)
-                .orElseThrow(() -> new IllegalArgumentException("ID da Consulta inválida: " + idConsulta));
-        model.addAttribute("consulta", consulta);
-        return "consulta/view";
-    }
-
     @GetMapping("/editar/{idConsulta}")
-    public String showUpdateForm(@PathVariable("idConsulta") long idConsulta, Model model) {
-        Consultas consulta = consultasService.getConsultaById(idConsulta)
-                .orElseThrow(() -> new IllegalArgumentException("ID da Consulta inválida: " + idConsulta));
-        model.addAttribute("consulta", consulta);
+    public String showUpdateConsultaForm(@PathVariable("idConsulta") long idConsulta, Model model){
+        Consultas consulta = consultasService.getConsultaById(idConsulta).orElseThrow(()-> new IllegalArgumentException("ID da Consulta Inválido: " + idConsulta));
+        model.addAttribute("consultas", consulta);
         return "consulta/form";
     }
 
-    @GetMapping("/deletar/{idConsulta}")
-    public String deleteConsulta(@PathVariable("idConsulta") long idConsulta) {
+    @GetMapping("/delete/{idConsulta}")
+    public String deleteConsulta(@PathVariable("idConsulta") long idConsulta){
         consultasService.deleteConsulta(idConsulta);
         return "redirect:/consultas";
     }
