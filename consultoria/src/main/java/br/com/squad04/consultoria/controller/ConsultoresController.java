@@ -29,14 +29,16 @@ public class ConsultoresController {
     }
 
     @GetMapping("/novo")
-    public String showForm(Consultores consultor){
+    public String showConsultorForm(Consultores consultor){
         return "consultor/form";
     }
 
     @PostMapping
     public String saveConsultor(@ModelAttribute Consultores consultor){
-        // Atualiza o timestamp de dataCadastro
-        consultor.setDataCadastro(new Timestamp(System.currentTimeMillis()));
+        if (consultor.getIdConsultor() == null) {
+            consultor.setDataCadastro(new Timestamp(System.currentTimeMillis()));
+        }
+        consultor.setTipoDeUsuario("Consultor");
         consultoresService.saveConsultor(consultor);
         return "redirect:/consultores";
     }
@@ -50,9 +52,9 @@ public class ConsultoresController {
     }
 
     @GetMapping("editar/{idConsultor}")
-    public String showUpdateForm(@PathVariable("idConsultor") long idConsultor, Model model){
-        Consultores consultor = consultoresService.getConsultorById(idConsultor).orElseThrow(() -> new IllegalArgumentException("ID do Consultor inválida: " + idConsultor));
-        model.addAttribute("consultor", consultor);
+    public String showUpdateConsultorForm(@PathVariable("idConsultor") long idConsultor, Model model){
+        Consultores consultores = consultoresService.getConsultorById(idConsultor).orElseThrow(() -> new IllegalArgumentException("ID do Consultor Inválido: " + idConsultor));
+        model.addAttribute("consultores", consultores);
         return "consultor/form";
     }
 

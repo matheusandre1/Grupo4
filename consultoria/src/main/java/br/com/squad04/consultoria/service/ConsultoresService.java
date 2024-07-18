@@ -27,10 +27,10 @@ public class ConsultoresService {
         if (consultor.getIdConsultor() == null) {
             // Novo consultor, definir data de cadastro
             consultor.setDataCadastro(new Timestamp(System.currentTimeMillis()));
-        } else {
+        }else{
             // Atualização, manter a data de cadastro original
-            Consultores existingConsultor = consultoresRepository.findById(consultor.getIdConsultor()).orElseThrow();
-            consultor.setDataCadastro(existingConsultor.getDataCadastro());
+            Consultores consultorExistente = consultoresRepository.findById(consultor.getIdConsultor()).orElseThrow();
+            consultor.setDataCadastro(consultorExistente.getDataCadastro());
         }
         return consultoresRepository.save(consultor);
     }

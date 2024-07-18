@@ -13,11 +13,13 @@ public class Consultores{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idConsultor;
     private String nomeConsultor;
+    private String fotoNome;
     private String especializacao;
     private String experiencia;
     private String telefone;
     private String email;
     private String senha;
+    private String tipoDeUsuario;
     private Timestamp dataCadastro;
 
     public Long getIdConsultor() {
@@ -32,6 +34,13 @@ public class Consultores{
     }
     public void setNomeConsultor(String nomeConsultor) {
         this.nomeConsultor = nomeConsultor;
+    }
+
+    public String getFotoNome() {
+        return fotoNome;
+    }
+    public void setFotoNome(String fotoNome) {
+        this.fotoNome = fotoNome;
     }
 
     public String getEspecializacao() {
@@ -69,10 +78,17 @@ public class Consultores{
         this.senha = senha;
     }
     
+    public String getTipoDeUsuario() {
+        return tipoDeUsuario;
+    }
+    public void setTipoDeUsuario(String tipoDeUsuario) {
+        this.tipoDeUsuario = tipoDeUsuario;
+    }
+
     public Timestamp getDataCadastro() {
         return dataCadastro;
     }
     public void setDataCadastro(Timestamp dataCadastro) {
         this.dataCadastro = dataCadastro;
-    }
+    }  
 }
