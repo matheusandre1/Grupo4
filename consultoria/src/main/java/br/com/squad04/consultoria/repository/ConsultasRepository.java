@@ -1,11 +1,11 @@
 package br.com.squad04.consultoria.repository;
 
-import br.com.squad04.consultoria.model.Consultas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import br.com.squad04.consultoria.model.Consultas;
 
 @Repository
-public interface ConsultasRepositories extends JpaRepository<Consultas, Long> {
-}
-
+public interface ConsultasRepository extends JpaRepository<Consultas, Long> {
+ 
+} 

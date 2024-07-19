@@ -10,4 +10,5 @@ public class ConsultoriaApplication {
 		SpringApplication.run(ConsultoriaApplication.class, args);
 		System.out.println("teste");
 	}
+
 }

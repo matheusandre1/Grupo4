@@ -10,14 +10,14 @@ CREATE TABLE "clientes" (
     "email" varchar(100) NOT NULL UNIQUE,
     "senha" varchar(300) NOT NULL,
     "tipo_de_usuario" varchar(9),
-    "id_consultor" serial NOT NULL
+    "id_consultor" int NOT NULL
 );
 
 CREATE TABLE "consultores" (
     "id_consultor" serial PRIMARY KEY,
     "nome_consultor" varchar (50),
     "foto_nome" varchar(100),
-    "data_cadastro" date NOT NULL,
+    "data_cadastro" timestamp NOT NULL,
     "telefone" varchar(15) NOT NULL,
     "email" varchar(100) NOT NULL UNIQUE,
     "senha" varchar(300) NOT NULL,

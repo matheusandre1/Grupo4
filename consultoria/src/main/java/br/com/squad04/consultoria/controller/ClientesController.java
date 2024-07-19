@@ -1,65 +1,69 @@
 package br.com.squad04.consultoria.controller;
 
-import br.com.squad04.consultoria.model.Clientes;
-import br.com.squad04.consultoria.service.IClientesService;
+import java.sql.Timestamp;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import br.com.squad04.consultoria.model.Clientes;
+import br.com.squad04.consultoria.model.Consultores;
+import br.com.squad04.consultoria.service.ClientesService;
+import br.com.squad04.consultoria.service.ConsultoresService;
 
 @Controller
 @RequestMapping("/clientes")
 public class ClientesController {
+    @Autowired
+    private ClientesService clientesService;
 
     @Autowired
-    private IClientesService iClientesService;
+    private ConsultoresService consultoresService; // Injete o serviço de Consultor
 
 
     @GetMapping
-    public String getAllClientes(Model model) {
-        List<Clientes> clientes = iClientesService.getAllClientes();
+    public String getAllClientes(Model model){
+        List<Clientes> clientes = clientesService.getAllClientes();
         model.addAttribute("clientes", clientes);
-        return "clientes/list";
+        return "cliente/list";
     }
 
     @GetMapping("/novo")
-    public String showForm(Clientes cliente) {
-        return "clientes/form";
+    public String showClienteForm(Model model){
+        model.addAttribute("clientes", new Clientes());
+        List<Consultores> consultor = consultoresService.getAllConsultores();
+        model.addAttribute("consultor", consultor); 
+        return "cliente/form";
     }
 
     @PostMapping
-    public String saveCliente(@ModelAttribute Clientes cliente) {
-        cliente.setDataCadastro(LocalDate.now());
-        cliente.setTipoDeUsuario("CLIENTES");
-        iClientesService.saveCliente(cliente);
+    public String saveCliente(@ModelAttribute Clientes cliente){
+        if (cliente.getIdCliente() == null) {
+            cliente.setDataCadastro(new Timestamp(System.currentTimeMillis()));
+        }
+        cliente.setTipoDeUsuario("Clientes");
+        clientesService.saveCliente(cliente);
         return "redirect:/clientes";
-    }
-
-    @GetMapping("/visualizar/{idCliente}")
-    public String viewCliente(@PathVariable("idCliente") long idCliente, Model model) {
-        Clientes cliente = iClientesService.getClienteById(idCliente)
-                .orElseThrow(() -> new IllegalArgumentException("ID da Cliente inválido: " + idCliente));
-        model.addAttribute("clientes", cliente);
-        return "clientes/view";
     }
 
     @GetMapping("/editar/{idCliente}")
-    public String showUpdateForm(@PathVariable("idCliente") long idCliente, Model model) {
-        Clientes cliente = iClientesService.getClienteById(idCliente)
-                .orElseThrow(() -> new IllegalArgumentException("ID da Cliente inválido: " + idCliente));
+    public String showUpdateClienteForm(@PathVariable("idCliente") long idCliente, Model model) {
+        Clientes cliente = clientesService.getClienteById(idCliente).orElseThrow(() -> new IllegalArgumentException("ID do Cliente Inválido: " + idCliente));
         model.addAttribute("clientes", cliente);
-        return "clientes/form";
+        List<Consultores> consultor = consultoresService.getAllConsultores();
+        model.addAttribute("consultor", consultor); 
+        return "cliente/form";
     }
 
-    @GetMapping("/deletar/{idCliente}")
-    public String deleteCliente(@PathVariable("idCliente") long idCliente) {
-        iClientesService.deleteCliente(idCliente);
+    @GetMapping("/delete/{idCliente}")
+    public String deleteCliente(@PathVariable("idCliente") Long idCliente){
+        clientesService.deleteCliente(idCliente);
         return "redirect:/clientes";
     }
-
 }

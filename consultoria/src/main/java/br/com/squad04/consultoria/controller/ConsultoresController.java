@@ -2,6 +2,7 @@ package br.com.squad04.consultoria.controller;
 
 import java.sql.Timestamp;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import br.com.squad04.consultoria.model.Consultores;
 import br.com.squad04.consultoria.service.ConsultoresService;
 
@@ -27,14 +29,16 @@ public class ConsultoresController {
     }
 
     @GetMapping("/novo")
-    public String showForm(Consultores consultor){
+    public String showConsultorForm(Consultores consultor){
         return "consultor/form";
     }
 
     @PostMapping
     public String saveConsultor(@ModelAttribute Consultores consultor){
-        // Atualiza o timestamp de dataCadastro
-        consultor.setDataCadastro(new Timestamp(System.currentTimeMillis()));
+        if (consultor.getIdConsultor() == null) {
+            consultor.setDataCadastro(new Timestamp(System.currentTimeMillis()));
+        }
+        consultor.setTipoDeUsuario("Consultor");
         consultoresService.saveConsultor(consultor);
         return "redirect:/consultores";
     }
@@ -48,8 +52,8 @@ public class ConsultoresController {
     }
 
     @GetMapping("editar/{idConsultor}")
-    public String showUpdateForm(@PathVariable("idConsultor") long idConsultor, Model model){
-        Consultores consultores = consultoresService.getConsultorById(idConsultor).orElseThrow(() -> new IllegalArgumentException("ID do Consultor inválida: " + idConsultor));
+    public String showUpdateConsultorForm(@PathVariable("idConsultor") long idConsultor, Model model){
+        Consultores consultores = consultoresService.getConsultorById(idConsultor).orElseThrow(() -> new IllegalArgumentException("ID do Consultor Inválido: " + idConsultor));
         model.addAttribute("consultores", consultores);
         return "consultor/form";
     }

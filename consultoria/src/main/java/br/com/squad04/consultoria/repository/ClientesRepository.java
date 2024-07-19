@@ -1,9 +1,10 @@
 package br.com.squad04.consultoria.repository;
 
-import br.com.squad04.consultoria.model.Relatorio;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import br.com.squad04.consultoria.model.Clientes;
+
 @Repository
-public interface RelatorioRepository extends JpaRepository<Relatorio, Long> {
+public interface ClientesRepository extends JpaRepository<Clientes, Long> {
 }
