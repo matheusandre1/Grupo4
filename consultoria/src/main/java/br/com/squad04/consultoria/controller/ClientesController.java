@@ -28,26 +28,25 @@ public class ClientesController {
 
 
     @GetMapping
-    public String getAllClientes(Model model){
+    public String getAllClientes(Model model) {
         List<Clientes> clientes = clientesService.getAllClientes();
         model.addAttribute("clientes", clientes);
         return "cliente/list";
     }
 
     @GetMapping("/novo")
-    public String showClienteForm(Model model){
+    public String showClienteForm(Model model) {
         model.addAttribute("clientes", new Clientes());
         List<Consultores> consultor = consultoresService.getAllConsultores();
-        model.addAttribute("consultor", consultor); 
+        model.addAttribute("consultor", consultor);
         return "cliente/form";
     }
 
     @PostMapping
-    public String saveCliente(@ModelAttribute Clientes cliente){
+    public String saveCliente(@ModelAttribute Clientes cliente) {
         if (cliente.getIdCliente() == null) {
             cliente.setDataCadastro(new Timestamp(System.currentTimeMillis()));
-        }
-        else {
+        } else {
             // Mantém a dataCadastro existente se o consultor já tiver um ID
             Clientes clienteExistente = clientesService.getClienteById(cliente.getIdCliente()).orElseThrow(() -> new IllegalArgumentException("ID do Cliente inválido: " + cliente.getIdCliente()));
             cliente.setDataCadastro(clienteExistente.getDataCadastro());
@@ -62,12 +61,12 @@ public class ClientesController {
         Clientes cliente = clientesService.getClienteById(idCliente).orElseThrow(() -> new IllegalArgumentException("ID do Cliente Inválido: " + idCliente));
         model.addAttribute("clientes", cliente);
         List<Consultores> consultor = consultoresService.getAllConsultores();
-        model.addAttribute("consultor", consultor); 
+        model.addAttribute("consultor", consultor);
         return "cliente/form";
     }
 
     @GetMapping("/delete/{idCliente}")
-    public String deleteCliente(@PathVariable("idCliente") Long idCliente){
+    public String deleteCliente(@PathVariable("idCliente") Long idCliente) {
         clientesService.deleteCliente(idCliente);
         return "redirect:/clientes";
     }

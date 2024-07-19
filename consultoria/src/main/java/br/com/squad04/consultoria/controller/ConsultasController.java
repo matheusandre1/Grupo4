@@ -30,14 +30,7 @@ public class ConsultasController {
     @Autowired
     private ClientesService clientesService;
 
-    @Autowired
-    private ConsultoresService consultoresService;
-
-    @Autowired
-    private ClientesService clientesService;
-
     @GetMapping
-    public String getAllConsultas(Model model){
     public String getAllConsultas(Model model){
         List<Consultas> consultas = consultasService.getAllConsultas();
         model.addAttribute("consultas", consultas);
@@ -54,22 +47,10 @@ public class ConsultasController {
         List<Clientes> cliente = clientesService.getAllClientes();
         model.addAttribute("cliente", cliente);
 
-    public String showConsultaForm(Model model){
-        model.addAttribute("consultas", new Consultas());
-        
-        List<Consultores> consultor = consultoresService.getAllConsultores();
-        model.addAttribute("consultor", consultor);
-
-        List<Clientes> cliente = clientesService.getAllClientes();
-        model.addAttribute("cliente", cliente);
-
         return "consulta/form";
     } 
     
-    } 
-    
     @PostMapping
-    public String saveConsultas(@ModelAttribute Consultas consulta){
     public String saveConsultas(@ModelAttribute Consultas consulta){
         consultasService.saveConsulta(consulta);
         return "redirect:/consultas";
@@ -79,9 +60,6 @@ public class ConsultasController {
     public String showUpdateConsultaForm(@PathVariable("idConsulta") long idConsulta, Model model){
         Consultas consulta = consultasService.getConsultaById(idConsulta).orElseThrow(()-> new IllegalArgumentException("ID da Consulta Inválido: " + idConsulta));
         model.addAttribute("consultas", consulta);
-    public String showUpdateConsultaForm(@PathVariable("idConsulta") long idConsulta, Model model){
-        Consultas consulta = consultasService.getConsultaById(idConsulta).orElseThrow(()-> new IllegalArgumentException("ID da Consulta Inválido: " + idConsulta));
-        model.addAttribute("consultas", consulta);
         
         List<Consultores> consultor = consultoresService.getAllConsultores();
         model.addAttribute("consultor", consultor);
@@ -91,8 +69,6 @@ public class ConsultasController {
         return "consulta/form";
     }
 
-    @GetMapping("/delete/{idConsulta}")
-    public String deleteConsulta(@PathVariable("idConsulta") long idConsulta){
     @GetMapping("/delete/{idConsulta}")
     public String deleteConsulta(@PathVariable("idConsulta") long idConsulta){
         consultasService.deleteConsulta(idConsulta);
