@@ -47,6 +47,11 @@ public class ClientesController {
         if (cliente.getIdCliente() == null) {
             cliente.setDataCadastro(new Timestamp(System.currentTimeMillis()));
         }
+        else {
+            // Mantém a dataCadastro existente se o consultor já tiver um ID
+            Clientes clienteExistente = clientesService.getClienteById(cliente.getIdCliente()).orElseThrow(() -> new IllegalArgumentException("ID do Cliente inválido: " + cliente.getIdCliente()));
+            cliente.setDataCadastro(clienteExistente.getDataCadastro());
+        }
         cliente.setTipoDeUsuario("Clientes");
         clientesService.saveCliente(cliente);
         return "redirect:/clientes";

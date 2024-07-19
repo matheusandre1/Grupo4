@@ -37,11 +37,17 @@ public class ConsultoresController {
     public String saveConsultor(@ModelAttribute Consultores consultor){
         if (consultor.getIdConsultor() == null) {
             consultor.setDataCadastro(new Timestamp(System.currentTimeMillis()));
+        }else {
+            // Mantém a dataCadastro existente se o consultor já tiver um ID
+            Consultores consultorExistente = consultoresService.getConsultorById(consultor.getIdConsultor()).orElseThrow(() -> new IllegalArgumentException("ID do Consultor inválido: " + consultor.getIdConsultor()));
+            consultor.setDataCadastro(consultorExistente.getDataCadastro());
         }
+
         consultor.setTipoDeUsuario("Consultor");
         consultoresService.saveConsultor(consultor);
         return "redirect:/consultores";
     }
+
 
     @GetMapping("/visualizar/{idConsultor}")
     public String viewConsultor(@PathVariable("idConsultor") long idConsultor, Model model){
