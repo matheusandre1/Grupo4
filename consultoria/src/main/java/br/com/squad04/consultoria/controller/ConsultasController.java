@@ -60,6 +60,12 @@ public class ConsultasController {
     public String showUpdateConsultaForm(@PathVariable("idConsulta") long idConsulta, Model model){
         Consultas consulta = consultasService.getConsultaById(idConsulta).orElseThrow(()-> new IllegalArgumentException("ID da Consulta Inválido: " + idConsulta));
         model.addAttribute("consultas", consulta);
+        
+        List<Consultores> consultor = consultoresService.getAllConsultores();
+        model.addAttribute("consultor", consultor);
+
+        List<Clientes> cliente = clientesService.getAllClientes();
+        model.addAttribute("cliente", cliente);
         return "consulta/form";
     }
 

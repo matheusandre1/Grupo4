@@ -1,68 +1,37 @@
 package br.com.squad04.consultoria.model;
 
-import jakarta.persistence.*;
+import java.sql.Timestamp;
 
-import java.time.LocalDate;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-@Table(name = "clientes")
 public class Clientes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_cliente")
-    private long idCliente;
-
-    @Column(name = "nome_empresa", length = 100, nullable = false)
+    private Long idCliente;
     private String nomeEmpresa;
-
-    @Column(name = "nome_responsavel", length = 100, nullable = false)
     private String nomeResponsavel;
-
-    @Column(name = "cnpj", length = 14, unique = true, nullable = false)
     private String cnpj;
-
-    @Column(name = "data_cadastro", nullable = false)
-    private LocalDate dataCadastro;
-
-    @Column(name = "telefone", length = 15, nullable = false)
+    private Timestamp dataCadastro;
     private String telefone;
-
-    @Column(name = "email", length = 100, nullable = false)
     private String email;
-
-    @Column(name = "senha", length = 300, nullable = false)
     private String senha;
-
-    @Column(name = "tipo_de_usuario", length = 9, nullable = false)
     private String tipoDeUsuario;
 
-    @Column(name = "id_consultor", nullable = false)
-    private Long idConsultor;
+    @ManyToOne
+    @JoinColumn(name = "id_consultor", nullable = false)
+    private Consultores idConsultor;
 
-
-    public Clientes(String nomeEmpresa, String nomeResponsavel, String cnpj,
-                    LocalDate dataCadastro, String telefone, String email, String senha,
-                    String tipoDeUsuario, Long idConsultor) {
-
-        this.nomeEmpresa = nomeEmpresa;
-        this.nomeResponsavel = nomeResponsavel;
-        this.cnpj = cnpj;
-        this.dataCadastro = dataCadastro;
-        this.telefone = telefone;
-        this.email = email;
-        this.senha = senha;
-        this.tipoDeUsuario = tipoDeUsuario;
-        this.idConsultor = idConsultor;
-    }
-
-    public Clientes() {
-    }
-
-    public long getIdCliente() {
+    public Long getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(long idCliente) {
+    public void setIdCliente(Long idCliente) {
         this.idCliente = idCliente;
     }
 
@@ -90,11 +59,11 @@ public class Clientes {
         this.cnpj = cnpj;
     }
 
-    public LocalDate getDataCadastro() {
+    public Timestamp getDataCadastro() {
         return dataCadastro;
     }
 
-    public void setDataCadastro(LocalDate dataCadastro) {
+    public void setDataCadastro(Timestamp dataCadastro) {
         this.dataCadastro = dataCadastro;
     }
 
@@ -117,9 +86,8 @@ public class Clientes {
     public String getSenha() {
         return senha;
     }
-
+    
     public void setSenha(String senha) {
-
         this.senha = senha;
     }
 
@@ -131,11 +99,12 @@ public class Clientes {
         this.tipoDeUsuario = tipoDeUsuario;
     }
 
-    public Long getIdConsultor() {
+    public Consultores getIdConsultor() {
         return idConsultor;
     }
 
-    public void setIdConsultor(Long idConsultor) {
+    public void setIdConsultor(Consultores idConsultor) {
         this.idConsultor = idConsultor;
     }
+
 }

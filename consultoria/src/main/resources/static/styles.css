@@ -124,18 +124,10 @@ p{
   margin-bottom: 10px;
 }
 
-.footer .list-inline {
-  padding-left: 0;
-}
-
-.footer .list-inline img {
-  width: 20px;
-}
-
-.footer .list-inline-item {
-  margin-right: 10px;
-}
-
 .footer h5{
   font-family: var(--fonte-primaria);
+}
+
+hr{
+  border-color: var(--cor-secundaria);
 }

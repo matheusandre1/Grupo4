@@ -22,12 +22,12 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class=" d-flex navbar-nav ml-auto" >
-                    <li class="nav-item"><a class="nav-link" href="#">Consultorias em TI</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/clientes}">Clientes</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/consultores}">Consultores</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Agendamento</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/consultas/nova}">Agendamento</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
-                    <li class="nav-item"><a id="botao-login" class="nav-link btn btn-primary btn-sm text-white" href="#">Log in</a></li>
-                    <li class="nav-item"><a id="botao-registro" class="nav-link btn btn-primary btn-sm text-white" href="#">Registrar</a></li>
+                    <li class="nav-item"><a id="botao-login" class="nav-link btn btn-primary btn-sm text-white mx-2" href="#">Log in</a></li>
+                    <li class="nav-item"><a id="botao-registro" class="nav-link btn btn-primary btn-sm text-white mx-2" href="#">Registrar</a></li>
                 </ul>
             </div>
         </nav>
@@ -36,38 +36,56 @@
         <h1 class="mb-3">Formulário de Consultor</h1>
         <form th:action="@{/consultores}" th:object="${consultores}" method="post">
             <input type="hidden" th:field="*{idConsultor}" />
+
             <div class="form-group">
                 <label for="nomeConsultor">Nome:</label>
-                <input class="form-control" type="text" id="nomeConsultor" th:field="*{nomeConsultor}" />
+                <input class="form-control" type="text" id="nomeConsultor" th:field="*{nomeConsultor}" placeholder="Digite seu nome completo" required />
             </div>
+            
             <div class="form-group">
                 <label for="fotoNome">Foto do Consultor:</label>
-                <input class="form-control" type="text" id="fotoNome" th:field="*{fotoNome}" />
+                <input class="form-control" type="text" id="fotoNome" th:field="*{fotoNome}" placeholder="Formato: nome.jpg" required />
             </div>
+
             <div class="form-group">
-                <label for="especializacao">Especialização:</label>
-                <input class="form-control" type="text" id="especializacao" th:field="*{especializacao}" />
+                <label for="especilização">Especialização:</label>
+                <select class="form-control" id="especializacao" th:field="*{especializacao}" required>
+                    <option value="" selected>Selecione a Especialização</option>
+                    <option value="Segurança Da Informação">Segurança da Informação</option>
+                    <option value="Infraestrutura de TI">Infraestrutura de TI</option>
+                    <option value="Computação em Nuvem">Computação em Nuvem</option>
+                    <option value="Big Data e Análise de Dados">Big Data e Análise de Dados</option>
+                    <option value="Inteligência Artificial e Machine Learning">Inteligência Artificial e Machine Learning</option>
+                    <option value="Consultoria em ERP">Consultoria em ERP</option>
+                    <option value="Desenvolvimento de Software">Desenvolvimento de Software</option>
+                    <option value="Gerenciamento de Projetos em TI">Gerenciamento de Projetos em TI</option>
+                    <option value=" DevOps e Automação"> DevOps e Automação</option>
+                </select>
             </div>
+
             <div class="form-group">
                 <label for="experiencia">Experiência:</label>
-                <input class="form-control" type="text" id="experiencia" th:field="*{experiencia}" />
+                <input class="form-control" type="text" id="experiencia" th:field="*{experiencia}" placeholder="Digite sua experiência" required />
             </div>
+
             <div class="form-group">
                 <label for="telefone">Telefone:</label>
-                <input class="form-control" type="text" id="telefone" th:field="*{telefone}" />
+                <input class="form-control" type="text" id="telefone" th:field="*{telefone}" placeholder="Formato:(XX) XXXXX-XXXX" required />
+                <div class="error" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}">
+                    Formato inválido. Use o formato: (XX) XXXXX-XXXX
+                </div>
             </div>
+
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input class="form-control" type="email" id="email" th:field="*{email}" />
+                <input class="form-control" type="email" id="email" th:field="*{email}" placeholder="Digite um e-mail válido" required />
             </div>
+
             <div class="form-group">
                 <label for="senha">Senha:</label>
-                <input class="form-control" type="password" id="senha" th:field="*{senha}" />
+                <input class="form-control" type="password" id="senha" th:field="*{senha}" required />
             </div>
-            <div class="form-group">
-                <label for="tipoDeUsuario">Tipo de Usuário:</label>
-                <input class="form-control" type="text" id="tipoDeUsuario" th:field="*{tipoDeUsuario}" />
-            </div>
+            
             <div class="d-flex justify-content-center">
                 <button class="btn btn-success btn px-4" type="submit">Salvar</button>
                 <a class="btn btn-secondary btn px-4 mx-3" th:href="@{/consultores}">Voltar</a>
@@ -90,10 +108,10 @@
             <div class="d-flex flex-column align-self-center">
                 <h5>Redes Sociais</h5>
                 <ul class="list-unstyled d-flex justify-content-between">
-                    <li><a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank"><img src="/images/facebook.png" width="20" alt="Facebook"></a></li>
-                    <li><a href="https://x.com/" target="_blank"><img src="/images/x.png" width="20" alt="X"></a></li>
-                    <li><a href="https://www.instagram.com/" target="_blank"><img src="/images/instagram.png" width="20" alt="Instagram"></a></li>
-                    <li><a href="https://www.linkedin.com/" target="_blank"><img src="/images/linkedin.png" width="20" alt="LinkedIn"></a></li>
+                    <li><a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank"><img src="/images/redeSocial/facebook.png" width="20" alt="Facebook"></a></li>
+                    <li><a href="https://x.com/" target="_blank"><img src="/images/redeSocial/x.png" width="20" alt="X"></a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank"><img src="/images/redeSocial/instagram.png" width="20" alt="Instagram"></a></li>
+                    <li><a href="https://www.linkedin.com/" target="_blank"><img src="/images/redeSocial/linkedin.png" width="20" alt="LinkedIn"></a></li>
                 </ul>
             </div>
         </div>
@@ -101,9 +119,11 @@
     <p class="text-center">Copyright &copy 2024 Squad 4, Alguns direitos reservados.</p>
     </footer>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="/js/validarConsultor.js"></script>
 
 </body>
 </html>
