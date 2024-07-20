@@ -15,7 +15,7 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light" >
-        <a class="navbar-brand" th:href=@{/}>
+        <a class="navbar-brand" th:href=@{/home}>
             <img src="/images/Logo.png" width="30" height="30" alt="Logo">
             <span>TechConsult</span>
         </a>
@@ -27,20 +27,20 @@
                 <li class="nav-item"><a class="nav-link" th:href="@{/clientes}">Clientes</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/consultores}">Consultores</a></li>
                 <li class="nav-item"><a class="nav-link" th:href="@{/consultas/nova}">Agendamento</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
-                <li class="nav-item gap-2"><a id="botao-login" class="nav-link btn btn-primary text-white mx-2" href="#">Log in</a></li>
-                <li class="nav-item gap-2"><a id="botao-registro" class="nav-link btn btn-primary text-white mx-2" href="#">Registrar</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                <li class="nav-item "><p class="nav-link">Bem-vindo(a), <span th:text="${usuarioLogado.usuario}"></span>!</p></li>
+                <li class="nav-item ">Breve</li>
             </ul>
         </div>
     </nav>
 
     <!-- Header -->
-    <header class="header">
+    <header class="header mb-5">
         <p> <img src="/images/header.png" alt="imagem da header" class="imagem-header"></p>
     </header>
 
     <!-- Carrosel -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="3000">
+    <div id="carouselExampleIndicators" class="carousel slide mx-5" data-ride="carousel" data-interval="3000">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="row">
@@ -93,14 +93,14 @@
     </div>
     
     <section class="text-center section-title">
-        <h2>Consultores</h2>
+        <h2 class="mb-4">Consultores</h2>
     </section>
-    <div class="grid-container">
+    <div class="grid-container mx-5">
         <div class="consultor">
             <img src="/images/consultores/joaovictor.jpg" alt="Foto do Consultor">
             <div class="info">
                 <h3>João Victor</h3>
-                <p>Especialização: Segurança da Informação</p>
+                <p class="mb-2">Especialização: Segurança da Informação</p>
                 <a th:href="@{consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
             </div>
         </div>
@@ -109,7 +109,7 @@
             <img src="/images/consultores/robertacristina.jpg" alt="Foto do Consultor">
             <div class="info">
                 <h3>Roberta Cristina</h3>
-                <p>Especialização: Infraestrutura de TI</p>
+                <p class="mb-2">Especialização: Infraestrutura de TI</p>
                 <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
             </div>
         </div>
@@ -117,8 +117,8 @@
         <div class="consultor">
             <img src="/images/consultores/jhonatanbarros.jpg" alt="Foto do Consultor">
             <div class="info">
-                <h3>Jhonatan Barros</h>
-                <p>Especialização: Computação em Nuvem</p>
+                <h3>Jhonatan Barros</h3>
+                <p class="mb-2">Especialização: Computação em Nuvem</p>
                 <a th:href="@{consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
             </div>
         </div>
@@ -126,8 +126,8 @@
         <div class="consultor">
             <img src="/images/consultores/rafaelsantos.jpg" alt="Foto do Consultor">
             <div class="info">
-                <h3>Rafael Santos</h>
-                <p>Especialização: Big Data e Análise de Dados</p>
+                <h3>Rafael Santos</h3>
+                <p class="mb-2">Especialização: Big Data e Análise de Dados</p>
                 <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
             </div>
         </div>
@@ -135,8 +135,8 @@
         <div class="consultor">
             <img src="/images/consultores/jessicabatista.jpg" alt="Foto do Consultor">
             <div class="info">
-                <h3>Jéssica Batista</h>
-                <p>Especialização: Inteligência Artificial e Machine Learning</p>
+                <h3>Jéssica Batista</h3>
+                <p class="mb-2">Especialização: Inteligência Artificial e Machine Learning</p>
                 <a th:href="@{consulta/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
             </div>
         </div>
@@ -144,8 +144,8 @@
         <div class="consultor">
             <img src="/images/consultores/vanessadelgado.jpg" alt="Foto do Consultor">
             <div class="info">
-                <h3>Vanessa Delgado</h>
-                <p>Especialização: Consultoria em ERP</p>
+                <h3>Vanessa Delgado</h3>
+                <p class="mb-2">Especialização: Consultoria em ERP</p>
                 <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
             </div>
         </div>
@@ -153,8 +153,8 @@
         <div class="consultor">
             <img src="/images/consultores/fernandolima.jpg" alt="Foto do Consultor">
             <div class="info">
-                <h3>Fernando Lima</h>
-                <p>Especialização: Desenvolvimento de Software</p>
+                <h3>Fernando Lima</h3>
+                <p class="mb-2">Especialização: Desenvolvimento de Software</p>
                 <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
             </div>
         </div>
@@ -162,8 +162,8 @@
         <div class="consultor">
             <img src="/images/consultores/lazarodesouza.jpg" alt="Foto do Consultor">
             <div class="info">
-                <h3>Lázaro de Souza</h>
-                <p>Especialização: Gerenciamento de Projetos em TI</p>
+                <h3>Lázaro de Souza</h3>
+                <p class="mb-2">Especialização: Gerenciamento de Projetos em TI</p>
                 <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
             </div>
         </div>
@@ -171,39 +171,15 @@
         <div class="consultor">
             <img src="/images/consultores/daianeamaral.jpg" alt="Foto do Consultor">
             <div class="info">
-                <h3>Daiane Amaral</h>
-                <p>Especialização: DevOps e Automação</p>
+                <h3>Daiane Amaral</h3>
+                <p class="mb-2">Especialização: DevOps e Automação</p>
                 <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
             </div>
         </div>
     </div>
 
      <!-- Footer -->
-     <!-- <footer class="footer">
-        <div class="container-footer">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <h5>Contato</h5>
-                    <ul>
-                        <li>Email: techconsult@tc.com</li>
-                        <li>Telefone: +55 11 1234-5678</li>
-                        <li>Endereço: Rua da Computação, nº 53. Bairro Internet</li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h5>Redes Sociais</h5>
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank"><img src="./images/redes_sociais/facebook.png" alt="Facebook"></a></li>
-                        <li class="list-inline-item"><a href="https://x.com/" target="_blank"><img src="./images/redes_sociais/x.png" alt="X"></a></li>
-                        <li class="list-inline-item"><a href="https://www.instagram.com/" target="_blank"><img src="./images/redes_sociais/instagram.png" alt="Instagram"></a></li>
-                        <li class="list-inline-item"><a href="https://www.linkedin.com/" target="_blank"><img src="./images/redes_sociais/linkedin.png" alt="LinkedIn"></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer> -->
-
-    <footer class="footer">
+    <footer class="footer" id="contato">
         <div class=" container d-flex justify-content-around">
             <div>
                 <h5>Contato</h5>

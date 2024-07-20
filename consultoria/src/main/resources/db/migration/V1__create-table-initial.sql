@@ -1,5 +1,11 @@
 -- Criação das tabelas
 
+CREATE TABLE "usuarios" (
+    "id_usuario" serial PRIMARY KEY,
+    "usuario" varchar(100) NOT NULL UNIQUE,
+    "senha" varchar(100) NOT NULL
+);
+
 CREATE TABLE "clientes" (
     "id_cliente" serial PRIMARY KEY,
     "nome_empresa" varchar(100) NOT NULL UNIQUE,

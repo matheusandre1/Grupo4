@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+  --cor-primaria: #171616; 
+  --cor-secundaria: #EDEDED; 
+  --azul-claro: #AFC1D0; 
+  --azul-escuro: #1C3F60; 
+  --verde-limao: #80FF00; 
+
+  --fonte-primaria: 'Rubik', Arial, sans-serif;
+  --fonte-secundaria: 'Roboto', Arial, sans-serif;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
+div h1 {
+    margin-top: 90px;
+    margin-bottom: 25px;
+    font-family: var(--fonte-primaria);
+}
+
+.container-table{
+  margin-bottom: 140px;
+}
+
+.footer {
+  width: 100%;
+  padding: 20px;
+  background-color: var(--azul-escuro);
+  color: var(--cor-secundaria);
+
+}
+
+.footer h5{
+  font-family: var(--fonte-primaria);
+}
+
+.footer li, .footer p{
+  font-family: var(--fonte-secundaria);
+}
+
+hr{
+  border-color: var(--cor-secundaria);
+}
+
+@media (max-width: 450px) {
+  h1 {
+    font-size: 21px; 
+  }
+
+  h5 {
+    font-size: 15px; 
+  }
+
+  li {
+    font-size: 10px; 
+  }
+
+  .navbar-brand img {
+    width: 23px;
+    height: 23px;
+  }
+  
+  .navbar-toggler-icon{
+    width: 18px;
+    height: 18px;
+  }
+
+  .navbar-brand span {
+    font-size: 15px;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 5px;
+  }
+
+  .btn {
+    font-size: 11px; 
+    padding: 4px 7px; 
+}
+
+  .table {
+    font-size: 9px;
+  }
+
+  .table thead th, .table tbody td {
+    padding: 5px;
+  }
+
+  .btn-sm {
+    font-size: 8px; 
+    padding: 3px 3px;
+    margin-bottom: 2px; 
+  }
+
+  .footer .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer .container div {
+    margin-bottom: 20px;
+  }
+
+  .footer .container ul img {
+    width: 16px;
+  }
+
+  .footer p {
+    font-size: 10px; 
+  }
+}
+
+@media (min-width: 450px) and (max-width: 710px) {
+  h1 {
+    font-size: 28px; 
+  }
+
+  h5 {
+    font-size: 18px; 
+  }
+
+  li {
+    font-size: 13px; 
+  }
+
+  .navbar-brand img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .navbar-toggler-icon{
+    width: 20px;
+    height: 20px;
+  }
+
+  .navbar-brand span {
+    font-size: 18px;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 5px;
+  }
+
+  .btn {
+    font-size: 13px; 
+    padding: 5px 5px; 
+  }
+
+  .table {
+    font-size: 13px;
+  }
+
+  .table thead th, .table tbody td {
+    padding: 10px;
+    margin: 100% auto;
+  }
+
+  .btn-sm {
+    font-size: 10px; 
+    padding: 3px 3px;
+    margin-bottom: 2px; 
+  }
+
+  .footer .container div {
+    margin-bottom: 20px;
+  }
+
+  .footer .container ul img {
+    width: 18px;
+  }
+
+  .footer p {
+    font-size: 12px; 
+  }
+}
+
+@media (min-width: 710px) and (max-width: 993px) {
+  .btn-sm{
+    margin-bottom: 5px;
+  }
+}
+
+@media (min-width: 993px) and (max-width: 1025px) {
+  h1{
+    font-size: 28px;
+  }
+
+  h5 {
+    font-size: 18px; 
+  }
+
+  li {
+    font-size: 14px; 
+  }
+  
+  .btn {
+    font-size: 15px; 
+    padding: 5px 8px; 
+  }
+
+  .table {
+    font-size: 13px;
+  }
+
+  .btn-sm{
+    font-size: 13px;
+    margin-bottom: 5px;
+    padding: 2px;
+  }
+
+  .footer .container div {
+    margin-bottom: 20px;
+  }
+
+  .footer .container ul img {
+    width: 18px;
+  }
+
+  .footer p {
+    font-size: 12px; 
+  }
+}
+
+
