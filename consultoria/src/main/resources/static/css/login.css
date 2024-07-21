@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    --cor-primaria: #171616; 
+    --cor-secundaria: #EDEDED; 
+    --azul-claro: #AFC1D0; 
+    --azul-escuro: #1C3F60; 
+    --verde-limao: #80FF00; 
+  
+    --fonte-primaria: 'Rubik', Arial, sans-serif;
+    --fonte-secundaria: 'Roboto', Arial, sans-serif;
+  }
+
+body{
+    background-color: #f0f2f5;
+    height: 100vh;
+    margin: 0;
+}
+
+.container-login{
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 150px 0;
+}
+
+.login-card {
+    background-color: var(--cor-secundaria);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
+}
+
+.informacoes h1 {
+    font-family: var(--fonte-primaria);
+    color: var(--azul-escuro);
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;   
+}
+
+.informacoes p{
+    font-family: var(--fonte-secundaria);
+}
+
+.informacoes img {
+    max-height: 50px; 
+    margin-right: 10px; 
+}
+
+.form-control {
+    height: 45px;
+    padding: 10px;
+}
+
+.btn-primary {
+    background-color: var(--azul-escuro);
+    border: none;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: var(--azul-claro);
+}
+
+.registro {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.registro a {
+    color: var(--azul-escuro);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.registro a:hover {
+    text-decoration: underline;
+}
+
+.text-danger {
+    text-align: center;
+}
+
+.footer {
+    width: 100%;
+    padding: 20px;
+    background-color: var(--azul-escuro);
+    color: var(--cor-secundaria);  
+}
+  
+.footer h5{
+    font-family: var(--fonte-primaria);
+}
+  
+.footer li, .footer p{
+    font-family: var(--fonte-secundaria);
+}
+  
+hr{
+    border-color: var(--cor-secundaria);
+}

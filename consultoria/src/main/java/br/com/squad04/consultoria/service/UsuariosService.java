@@ -18,4 +18,8 @@ public class UsuariosService {
         }
         return null;
     }
+
+    public Usuarios salvarUsuario(Usuarios usuario) {
+        return usuariosRepository.save(usuario);
+    }
 }

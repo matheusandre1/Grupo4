@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -37,15 +38,27 @@ public class UsuariosController {
     public String home(HttpSession session, Model model) {
         Usuarios usuarioLogado = (Usuarios) session.getAttribute("usuarioLogado");
         if (session.getAttribute("usuarioLogado") == null) {
-            return "redirect:/login";
+            return "redirect:/";
         }
         model.addAttribute("usuarioLogado", usuarioLogado);
         return "home";
     }
 
+    @GetMapping("/cadastrar")
+    public String showUsuarioForm(Model model){
+        model.addAttribute("usuario", new Usuarios());
+        return "loginForm";
+    }
+
+    @PostMapping("/cadastrar")
+    public String saveUsuario(@ModelAttribute Usuarios usuario){
+        usuariosService.salvarUsuario(usuario);
+        return "redirect:/";
+    }
+
     @GetMapping("/logout")
     public String logout(HttpSession session){
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:/";
     }  
 }

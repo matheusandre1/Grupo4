@@ -4,23 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/login.css">
+
 </head>
 <body>
-    <h1>Login</h1>
-    <form th:action="@{/login}" method="post">
-        <div>
-            <label for="usuario">Usuario:</label>
-            <input type="text" id="usuario" name="usuario" required>
+    <div class="container-login">
+        <div class="login-card">
+            <div class="row">
+                <div class="col-md-6 d-flex flex-column justify-content-center informacoes">
+                    <h1>
+                        <img src="/images/logo.png" alt="Logo da Empresa">
+                        TechConsult
+                    </h1>
+                    <p>Consultoria especializada em TI. Oferecemos soluções inovadoras para transformar sua empresa com tecnologia de ponta.</p>
+                </div>
+                <div class="col-md-6">
+                    <form class="my-3" th:action="@{/login}" method="post">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="usuario" name="usuario" placeholder="Usuário" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                    </form>
+                    <div th:if="${erro}" th:text="${erro}" class="text-danger mt-3"></div>
+                    <div class="registro">
+                        <a th:href="@{/cadastrar}">Criar nova conta</a>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required>
+    </div>
+    
+    <footer class="footer">
+        <div class=" container d-flex justify-content-around">
+            <div>
+                <h5>Contato</h5>
+                <ul class="list-unstyled">
+                    <li>Email: techconsult@tc.com</li>
+                    <li>Telefone: +55 11 1234-5678</li>
+                    <li>Endereço: Rua da Computação, nº 53. Bairro Internet</li>
+                </ul>
+            </div>
+            <div class="d-flex flex-column align-self-center">
+                <h5>Redes Sociais</h5>
+                <ul class="list-unstyled d-flex justify-content-between">
+                    <li><a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank"><img src="/images/redeSocial/facebook.png" width="20" alt="Facebook"></a></li>
+                    <li><a href="https://x.com/" target="_blank"><img src="/images/redeSocial/x.png" width="20" alt="X"></a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank"><img src="/images/redeSocial/instagram.png" width="20" alt="Instagram"></a></li>
+                    <li><a href="https://www.linkedin.com/" target="_blank"><img src="/images/redeSocial/linkedin.png" width="20" alt="LinkedIn"></a></li>
+                </ul>
+            </div>
         </div>
-        <div>
-            <button type="submit">Login</button>
-            <a th:href="@{/cadastrar}">Cadastrar</a>
-        </div>
-    </form>
-    <div th:if="${erro}"th:text="${erro}" style="color: red;"></div>
+    <hr>
+    <p class="text-center">Copyright &copy 2024 Squad 4, Alguns direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
