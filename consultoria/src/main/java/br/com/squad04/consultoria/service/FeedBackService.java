@@ -4,10 +4,12 @@ import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.squad04.consultoria.model.FeedBack;
 import br.com.squad04.consultoria.repository.FeedBackRepository;
 
+@Service
 public class FeedBackService {
 
     @Autowired
