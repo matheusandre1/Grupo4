@@ -61,7 +61,7 @@
 
             <div class="form-group">
                 <label for="horaConsulta">Hora:</label>
-                <input class="form-control" id="horaConsulta" type="text" name="horaConsulta" th:field="*{horaConsulta}">
+                <input class="form-control" id="horaConsulta" type="time" name="horaConsulta" th:field="*{horaConsulta}">
                 <div class="error" th:if="${#fields.hasErrors('horaConsulta')}" th:errors="*{horaConsulta}">
                     A hora deve estar no formato HH:MM (24 horas)
                 </div>

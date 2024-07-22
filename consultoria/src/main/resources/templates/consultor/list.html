@@ -54,13 +54,13 @@
                     <td th:text="${#dates.format(consultor.dataCadastro, 'dd/MM/yyyy HH:mm:ss')}"></td>
                     <td>
                         <a th:href="@{/consultores/visualizar/{idConsultor}(idConsultor=${consultor.idConsultor})}" class="btn btn-secondary btn-sm">Visualizar</a>
-                        <a th:href="@{/consultores/editar/{idConsultor}(idConsultor=${consultor.idConsultor})}" class="btn btn-primary btn-sm">Editar</a>
-                        <a th:href="@{/consultores/deletar/{idConsultor}(idConsultor=${consultor.idConsultor})}" class="btn btn-danger btn-sm">Deletar</a>
+                        <a th:href="@{/consultores/editar/{idConsultor}(idConsultor=${consultor.idConsultor})}" class="btn btn-primary btn-sm editar-btn">Editar</a>
+                        <a th:href="@{/consultores/deletar/{idConsultor}(idConsultor=${consultor.idConsultor})}" class="btn btn-danger btn-sm deletar-btn">Deletar</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <a th:href="@{/consultores/novo}" class="btn btn-success">Novo Consultor</a>
+        <a th:href="@{/consultores/novo}" class="btn btn-success novo-btn">Novo Consultor</a>
     </div>
 
     <footer class="footer" id="contato">
@@ -91,6 +91,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>    
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/js/verificadorDeTipoDeUsuario.js"></script>
+
 
 </body>
 </html>
