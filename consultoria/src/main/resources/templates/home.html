@@ -222,52 +222,24 @@
         </div>
     </div>
 
-    <!-- feedback -->
-    <!-- <div class="container d-flex justify-content-center align-items-center mt-5">
-        <div class="feedback-form">
-            <h2 class="text-center mb-4">Dê Seu Feedback Sobre Os Nossos Serviços:</h2>
-            <form class="mb-3">
-                <div class="form-group">
-                    <label class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="input-name" placeholder="Digite seu nome" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Email</label>
-                    <input type="email" class="form-control" id="input-email" placeholder="email@email.com" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Telefone</label>
-                    <input type="number" class="form-control" id="input-phone" placeholder="Digite seu telefone" required>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Especialização</label>
-                    <select class="form-control" id="especializacao" required>
-                        <option value="" disabled selected>Escolha a Especialização</option>
-                        <option value="seguranca-informacao">Segurança da Informação</option>
-                        <option value="infraestrutura-de-TI">Infraestrutura de TI</option>
-                        <option value="cloud">Computação em Nuvem</option>
-                        <option value="bigdata">Big Data e Análise de Dados</option>
-                        <option value="enginnerIa">Engenharia IA</option>
-                        <option value="erp">Consultoria em ERP</option>
-                        <option value="software">Desenvolvimento de Software</option>
-                        <option value="manager">Gerenciamento de Projetos em TI</option>
-                        <option value="devops">DevOps e Automação</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Por favor, selecione uma especialização.
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Mensagem</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Digite seu Feedback"></textarea>
-                </div>
-                <button type="submit" class="btn btn-custom text-white  w-100">Enviar</button>
-            </form>
-        </div>
+    <!-- Washiner Takeuchi 
+     aqui e para exibir os feedback
+
+
+     <section class="feedback-section">
+    <h2>Feedback dos Clientes</h2>
+    <div class="feedback-list">
+        <ul th:each="feedback : ${feedbacks}">
+            <li>
+                <p><strong th:text="${feedback.clienteNome}"></strong>:</p>
+                <p th:text="${feedback.mensagem}"></p>
+                <p><small th:text="${#dates.format(feedback.dataEnvio, 'dd/MM/yyyy')}"></small></p>
+            </li>
+        </ul>
     </div>
+</section>
 
-    </div> -->
-
+    -->
      <!-- Footer -->
     <footer class="footer" id="contato">
         <div class=" container d-flex justify-content-around">
