@@ -40,7 +40,7 @@
                     <span class="nav-link">Bem-Vindo(a), <span th:text="${usuarioLogado.usuario}"></span>!</span>
                 </li>
                 <li class="nav-item">
-                    <a class="btn btn-outline-danger" th:href="@{/logout}">Logout</a>
+                    <a class=" nav-link btn-outline-danger ml-5" th:href="@{/logout}">Logout</a>
                 </li>
             </ul>
         </div>
@@ -50,6 +50,38 @@
     <header class="header mb-5">
         <p> <img src="/images/header.png" alt="imagem da header" class="imagem-header"></p>
     </header>
+
+    <section class="content-section mx-5 mb-5">
+        <p>
+            A TechConsult, é uma empresa de consultoria em TI dedicada a fornecer
+            serviços especializados para transformar e otimizar sua tecnologia. Com uma equipe de
+            profissionais altamente qualificados, estamos comprometidos em entregar soluções
+            inovadoras que atendem às suas necessidades específicas e superam suas expectativas.
+        </p>
+
+        <div class="col-md-5">
+            <h2 class="fs-3">Nossa Missão</h2>
+            <p>
+                Nossa missão é ajudar empresas a alcançar o sucesso por meio da tecnologia,
+                oferecendo serviços personalizados e de alta qualidade que promovem eficiência,
+                inovação e crescimento.
+            </p>
+        </div>
+
+        <div class="col-md-5">
+            <h2 class="fs-2">Nossos Valores</h2>
+
+            <ul>
+                <li class="fs-4">Excelência: Compromisso com a qualidade em tudo o que fazemos.</li>
+                <li class="fs-4">Inovação: Busca constante por soluções criativas e eficazes.</li>
+                <li class="fs-4">Integridade: Transparência e ética em todas as nossas interações.</li>
+                <li class="fs-4">Colaboração: Trabalho em equipe para alcançar os melhores resultados.</li>
+            </ul>
+
+
+        </div>
+
+    </section>
 
     <!-- Carrosel -->
     <div id="carouselExampleIndicators" class="carousel slide mx-5" data-ride="carousel" data-interval="3000">
@@ -105,15 +137,15 @@
     </div>
     
     <section class="text-center section-title">
-        <h2 class="mb-4">Consultores</h2>
+        <h2 class="mb-4">Nossa Equipe Especializada:</h2>
     </section>
     <div class="grid-container mx-5">
         <div class="consultor">
             <img src="/images/consultores/joaovictor.jpg" alt="Foto do Consultor">
             <div class="info">
                 <h3>João Victor</h3>
-                <p class="mb-2">Especialização: Segurança da Informação</p>
-                <a th:href="@{consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
+                <p class="mb-2">Segurança da Informação</p>
+                <a th:href="@{consultas/nova}" class="btn btn-custom text-white">Agende uma consulta</a>
             </div>
         </div>
     
@@ -121,8 +153,8 @@
             <img src="/images/consultores/robertacristina.jpg" alt="Foto do Consultor">
             <div class="info">
                 <h3>Roberta Cristina</h3>
-                <p class="mb-2">Especialização: Infraestrutura de TI</p>
-                <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
+                <p class="mb-2">Infraestrutura de TI</p>
+                <a th:href="@{/consultas/nova}" class="btn btn-custom text-white">Agende uma consulta</a>
             </div>
         </div>
 
@@ -130,8 +162,8 @@
             <img src="/images/consultores/jhonatanbarros.jpg" alt="Foto do Consultor">
             <div class="info">
                 <h3>Jhonatan Barros</h3>
-                <p class="mb-2">Especialização: Computação em Nuvem</p>
-                <a th:href="@{consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
+                <p class="mb-2">Computação em Nuvem</p>
+                <a th:href="@{consultas/nova}" class="btn btn-custom text-white">Agende uma consulta</a>
             </div>
         </div>
 
@@ -139,8 +171,8 @@
             <img src="/images/consultores/rafaelsantos.jpg" alt="Foto do Consultor">
             <div class="info">
                 <h3>Rafael Santos</h3>
-                <p class="mb-2">Especialização: Big Data e Análise de Dados</p>
-                <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
+                <p class="mb-2">Big Data e Análise de Dados</p>
+                <a th:href="@{/consultas/nova}" class="btn btn-custom text-white">Agende uma consulta</a>
             </div>
         </div>
 
@@ -148,8 +180,8 @@
             <img src="/images/consultores/jessicabatista.jpg" alt="Foto do Consultor">
             <div class="info">
                 <h3>Jéssica Batista</h3>
-                <p class="mb-2">Especialização: Inteligência Artificial e Machine Learning</p>
-                <a th:href="@{consulta/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
+                <p class="mb-2">Engenharia IA</p>
+                <a th:href="@{consulta/nova}" class="btn btn-custom text-white">Agende uma consulta</a>
             </div>
         </div>
 
@@ -157,8 +189,8 @@
             <img src="/images/consultores/vanessadelgado.jpg" alt="Foto do Consultor">
             <div class="info">
                 <h3>Vanessa Delgado</h3>
-                <p class="mb-2">Especialização: Consultoria em ERP</p>
-                <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
+                <p class="mb-2">Consultoria em ERP</p>
+                <a th:href="@{/consultas/nova}" class="btn btn-custom text-white">Agende uma consulta</a>
             </div>
         </div>
 
@@ -166,8 +198,8 @@
             <img src="/images/consultores/fernandolima.jpg" alt="Foto do Consultor">
             <div class="info">
                 <h3>Fernando Lima</h3>
-                <p class="mb-2">Especialização: Desenvolvimento de Software</p>
-                <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
+                <p class="mb-2">Desenvolvimento de Software</p>
+                <a th:href="@{/consultas/nova}" class="btn btn-custom text-white">Agende uma consulta</a>
             </div>
         </div>
 
@@ -175,8 +207,8 @@
             <img src="/images/consultores/lazarodesouza.jpg" alt="Foto do Consultor">
             <div class="info">
                 <h3>Lázaro de Souza</h3>
-                <p class="mb-2">Especialização: Gerenciamento de Projetos em TI</p>
-                <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
+                <p class="mb-2">Gerenciamento de Projetos em TI</p>
+                <a th:href="@{/consultas/nova}" class="btn btn-custom text-white">Agende uma consulta</a>
             </div>
         </div>
 
@@ -184,11 +216,57 @@
             <img src="/images/consultores/daianeamaral.jpg" alt="Foto do Consultor">
             <div class="info">
                 <h3>Daiane Amaral</h3>
-                <p class="mb-2">Especialização: DevOps e Automação</p>
-                <a th:href="@{/consultas/nova}" class="btn btn-outline-secondary">Agende uma consulta</a>
+                <p class="mb-2">DevOps e Automação</p>
+                <a th:href="@{/consultas/nova}" class="btn btn-custom text-white">Agende uma consulta</a>
             </div>
         </div>
     </div>
+
+    <!-- feedback -->
+    <!-- <div class="container d-flex justify-content-center align-items-center mt-5">
+        <div class="feedback-form">
+            <h2 class="text-center mb-4">Dê Seu Feedback Sobre Os Nossos Serviços:</h2>
+            <form class="mb-3">
+                <div class="form-group">
+                    <label class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="input-name" placeholder="Digite seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-control" id="input-email" placeholder="email@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Telefone</label>
+                    <input type="number" class="form-control" id="input-phone" placeholder="Digite seu telefone" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Especialização</label>
+                    <select class="form-control" id="especializacao" required>
+                        <option value="" disabled selected>Escolha a Especialização</option>
+                        <option value="seguranca-informacao">Segurança da Informação</option>
+                        <option value="infraestrutura-de-TI">Infraestrutura de TI</option>
+                        <option value="cloud">Computação em Nuvem</option>
+                        <option value="bigdata">Big Data e Análise de Dados</option>
+                        <option value="enginnerIa">Engenharia IA</option>
+                        <option value="erp">Consultoria em ERP</option>
+                        <option value="software">Desenvolvimento de Software</option>
+                        <option value="manager">Gerenciamento de Projetos em TI</option>
+                        <option value="devops">DevOps e Automação</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor, selecione uma especialização.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Mensagem</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Digite seu Feedback"></textarea>
+                </div>
+                <button type="submit" class="btn btn-custom text-white  w-100">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    </div> -->
 
      <!-- Footer -->
     <footer class="footer" id="contato">

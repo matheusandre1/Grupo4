@@ -46,9 +46,25 @@ header img {
   object-position: center;
 }
 
+.text-justify fs-custom-2{
+text-align: justify;
+font-size: 56px
+}
+
 .carousel-item img {
   width: 50%;
   max-height: 300px;
+}
+
+.btn-custom {
+  background-color: var(--azul-escuro) !important;
+  border-color: var(--azul-escuro) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: var(--azul-claro) !important;
+  border-color: var(--azul-claro) !important;
 }
 
 .carousel-inner {
@@ -69,34 +85,56 @@ header img {
 
 .consultor {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  width: calc(33.333% - 20px); 
-  margin-bottom: 20px; 
-  border: 1px solid #ddd;
-  padding: 10px;
-  background-color: #fff;
-  border-radius: 5px;
+  text-align: center;
+  border: 1px solid #ddd; 
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .consultor img {
-  width: 60px;
-  height: 60px;
+  width: 150px; /* Ajuste conforme necessário */
+  height: 150px; /* Ajuste conforme necessário */
   border-radius: 50%;
-  margin-right: 15px;
+  margin-bottom: 15px;
 }
 
 .consultor .info {
-  flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .consultor h3 {
-  margin: 0 0 5px 0;
-  font-size: 16px;
-  font-family: var(--fonte-primaria);
+    margin: 10px 0;
+    font-size: 1.2rem;
 }
 
+
+.consultor p {
+    margin: 5px 0;
+    font-size: 1rem;
+}
+
+.consultor .btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Cor do botão */
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
 p{
   font-family: var(--fonte-secundaria);
+  text-align:justify;
+
 }
 
 .consultor p {
@@ -105,6 +143,10 @@ p{
   color: #666;
 }
 
+.feedback{
+max-width: 600px;
+margin-top: 50px;
+}
 
 .footer {
   width: 100%;
