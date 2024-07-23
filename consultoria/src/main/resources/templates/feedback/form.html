@@ -1,11 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=h', initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
-    <h1>Aqui sera o codigo do feedback</h1>
+    <div class="container mt-5">
+        <h2>Novo Feedback</h2>
+        <form th:action="@{/feedbacks}" th:object="${feedbacks}" method="post">
+            <div class="form-group">
+                <label for="clientes">Clientes:</label>
+                <select class="form-control" id="clientes" th:field="*{idCliente}" required>
+                <option value="" selected>Selecione o Cliente</option>
+                <option th:each="cliente : ${cliente}" 
+                        th:value="${cliente.idCliente}" 
+                        th:text="${cliente.nomeEmpresa}">Clientes</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="feedback" class="form-label">Comentário</label>
+                <textarea id="feedback" th:field="*{feedback}" class="form-control" rows="3" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a th:href="@{/home}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

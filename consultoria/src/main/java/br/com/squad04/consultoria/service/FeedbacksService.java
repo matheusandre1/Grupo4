@@ -6,21 +6,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.squad04.consultoria.model.FeedBack;
-import br.com.squad04.consultoria.repository.FeedBackRepository;
+import br.com.squad04.consultoria.model.Feedbacks;
+import br.com.squad04.consultoria.repository.FeedbacksRepository;
 
 @Service
-public class FeedBackService {
+public class FeedbacksService {
 
     @Autowired
-    private FeedBackRepository feedbackRepository;
+    private FeedbacksRepository feedbackRepository;
 
-    public List<FeedBack> getAllFeedbacks() {
+    public List<Feedbacks> getAllFeedbacks() {
         return feedbackRepository.findAll();
     }
 
-    public FeedBack saveFeedback(FeedBack feedback) {
-        feedback.setDataEnvio(new Timestamp(System.currentTimeMillis()));
+    public Feedbacks saveFeedback(Feedbacks feedback) {
+        feedback.setDataFeedback(new Timestamp(System.currentTimeMillis()));
         return feedbackRepository.save(feedback);
     }
 

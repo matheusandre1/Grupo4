@@ -1,5 +1,7 @@
 package br.com.squad04.consultoria.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import br.com.squad04.consultoria.model.Feedbacks;
 import br.com.squad04.consultoria.model.Usuarios;
+import br.com.squad04.consultoria.service.FeedbacksService;
 import br.com.squad04.consultoria.service.UsuariosService;
 import jakarta.servlet.http.HttpSession;
 
@@ -16,6 +20,9 @@ import jakarta.servlet.http.HttpSession;
 public class UsuariosController {
     @Autowired
     private UsuariosService usuariosService;
+
+    @Autowired
+    private FeedbacksService feedbacksService;
 
     @GetMapping("/")
     public String showLogin() {
@@ -40,6 +47,9 @@ public class UsuariosController {
         if (session.getAttribute("usuarioLogado") == null) {
             return "redirect:/";
         }
+        List<Feedbacks> feedbacks = feedbacksService.getAllFeedbacks();
+        model.addAttribute("feedbacks", feedbacks);
+
         model.addAttribute("usuarioLogado", usuarioLogado);
         return "home";
     }

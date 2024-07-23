@@ -57,6 +57,21 @@ body{
     padding: 10px;
 }
 
+.primeiro-radio{
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+.segundo-radio{
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+.terceiro-radio{
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
 .btn-primary {
     background-color: var(--azul-escuro);
     border: none;

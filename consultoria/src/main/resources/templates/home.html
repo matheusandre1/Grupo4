@@ -223,7 +223,22 @@
     </div>
 
     <div>
-        <a th:href="@{feedbacks/novo}">Sua opnião é importante para nós Deixe o seu Feedback</a>
+        <div class="container mt-5">
+            <h2 class="text-center mb-4">FeedBacks</h2>
+            <div class="row">
+                <div class="col-md-4" th:each="feedback : ${feedbacks}">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title" th:text="${feedback.IdCliente.nomeEmpresa}"></h5>
+                            <h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(feedback.dataFeedback, 'dd/MM/yyyy')}"></h6>
+                            <p class="card-text" th:text="${feedback.feedback}"></p>
+                            <a th:href="@{/feedbacks/deletar/{idFeedback}(idFeedback=${feedback.idFeedback})}" class="btn btn-danger">Deletar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>
+        <a th:href="@{feedbacks/novo}" class="btn btn-primary">Sua opnião é importante para nós Deixe o seu Feedback</a>
     </div>
 
      <!-- Footer -->
