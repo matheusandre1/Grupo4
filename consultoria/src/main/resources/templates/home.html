@@ -40,7 +40,7 @@
                     <span class="nav-link">Bem-Vindo(a), <span th:text="${usuarioLogado.usuario}"></span>!</span>
                 </li>
                 <li class="nav-item">
-                    <a class=" nav-link btn-outline-danger ml-5" th:href="@{/logout}">Logout</a>
+                    <a class=" text-white btn btn-custom ml-5" th:href="@{/logout}">Logout</a>
                 </li>
             </ul>
         </div>
@@ -114,44 +114,57 @@
         </a>
     </div>
 
-    <section class="content-section mx-5 mb-5 texto-aumentado cards-section">
-        <p>
-            TechConsult é uma empresa de consultoria em TI que se destaca pela excelência e inovação na transformação e
-            otimização tecnológica das empresas. Nossa equipe é composta por profissionais altamente qualificados,
-            comprometidos em oferecer soluções que não apenas atendem, mas superam as necessidades específicas de nossos
-            clientes.
-
-            Com um portfólio abrangente de serviços, abrangemos desde a segurança da informação e infraestrutura de TI
-            até a computação em nuvem e análise de big data. Cada projeto é tratado de forma única, garantindo uma
-            abordagem personalizada e estratégica que resulta em maior eficiência, inovação e crescimento para as
-            empresas.
-
-            Na TechConsult, acreditamos que a tecnologia é um catalisador essencial para o sucesso empresarial. Por
-            isso, estamos sempre à frente das tendências, incorporando as melhores práticas e ferramentas mais avançadas
-            do mercado para entregar resultados tangíveis e de alto impacto.
-        </p>
-    </section>
-
-    <section class="content-section mx-5 mb-5 cards-section">
-        <div class="card-container">
-            <div class="card">
-                <h2 class="fs-3">Nossa Missão</h2>
-                <p>
-                    Nossa missão é ajudar empresas a alcançar o sucesso por meio da tecnologia, oferecendo serviços personalizados e de alta qualidade que promovem eficiência, inovação e crescimento. Nos dedicamos a entender as necessidades de cada cliente, garantindo que nossas soluções sejam eficazes e alinhadas aos objetivos de cada empresa.
-                </p>
+    <section class="container mt-5 mb-5">
+        <div class="card">
+            <div class="card-header text-white">
+                <h4 class="card-title m-0">TechConsult</h4>
             </div>
-            <div class="card">
-                <h2 class="fs-3">Nossa Visão</h2>
-                <p>
-                    Nossa visão é ser a principal referência em consultoria de TI, reconhecida por
-                    nossa capacidade de transformar desafios tecnológicos em oportunidades de sucesso
-                    para nossos clientes, utilizando as melhores práticas e soluções inovadoras.
+            <div class="card-body bg-light">
+                <p class="card-text">
+                    É uma empresa de consultoria em TI que se destaca pela excelência e inovação na transformação e
+                    otimização tecnológica das empresas. Nossa equipe é composta por profissionais altamente qualificados,
+                    comprometidos em oferecer soluções que não apenas atendem, mas superam as necessidades específicas de nossos
+                    clientes.
                 </p>
-            </div>
+
+                <p class="card-text">
+                    Com um portfólio abrangente de serviços, abrangemos desde a segurança da informação e infraestrutura de TI
+                    até a computação em nuvem e análise de big data. Cada projeto é tratado de forma única, garantindo uma
+                    abordagem personalizada e estratégica que resulta em maior eficiência, inovação e crescimento para as
+                    empresas.
+                </p>
+
+                <p class="card-text">
+                    Na TechConsult, acreditamos que a tecnologia é um catalisador essencial para o sucesso empresarial. Por
+                    isso, estamos sempre à frente das tendências, incorporando as melhores práticas e ferramentas mais avançadas
+                    do mercado para entregar resultados tangíveis e de alto impacto.
+                </p>
+            </div>                                   
         </div>
 
+        <div class="d-flex mt-5 ">
+            <div class="card">
+                <div class="card-header text-white">
+                    <h4 class="card-title m-0">Nossa Missão</h4>
+                </div>
+                <div class="card-body bg-light">
+                    <p class="card-text">
+                        Nossa missão é ajudar empresas a alcançar o sucesso por meio da tecnologia, oferecendo serviços personalizados e de alta qualidade que promovem eficiência, inovação e crescimento. Nos dedicamos a entender as necessidades de cada cliente, garantindo que nossas soluções sejam eficazes e alinhadas aos objetivos de cada empresa.
+                    </p>
+                </div>  
+            </div>
+            <div class="card ml-5">
+                <div class="card-header text-white">
+                    <h4 class="card-title m-0">Nossa Visão</h4>
+                </div>
+                <div class="card-body bg-light">
+                    <p class="card-text">
+                        Nossa missão é ajudar empresas a alcançar o sucesso por meio da tecnologia, oferecendo serviços personalizados e de alta qualidade que promovem eficiência, inovação e crescimento. Nos dedicamos a entender as necessidades de cada cliente, garantindo que nossas soluções sejam eficazes e alinhadas aos objetivos de cada empresa.
+                    </p>
+                </div>  
+            </div>
+        </div>
     </section>
-
 
     <section class="text-center section-title">
         <h2 class="mb-4">Nossa Equipe Especializada:</h2>
@@ -241,21 +254,29 @@
 
     <div>
         <div class="container mt-5">
-            <h2 class="text-center mb-4">FeedBacks</h2>
+            <h2 class="text-center mb-4">FeedBack dos Clientes</h2>
             <div class="row">
                 <div class="col-md-4" th:each="feedback : ${feedbacks}">
                     <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${feedback.IdCliente.nomeEmpresa}"></h5>
-                            <h6 class="card-subtitle mb-2 text-muted" th:text="${#dates.format(feedback.dataFeedback, 'dd/MM/yyyy')}"></h6>
+                        <div class="card-header d-flex justify-content-between text-white">
+                            <h5 class="card-title m-0" th:text="${feedback.IdCliente.nomeEmpresa}"></h5>
+                            <h6 class="card-subtitle m-0 " th:text="${#dates.format(feedback.dataFeedback, 'dd/MM/yyyy')}"></h6>
+                        </div>
+                        <div class="card-body bg-light">
                             <p class="card-text" th:text="${feedback.feedback}"></p>
-                            <a th:href="@{/feedbacks/deletar/{idFeedback}(idFeedback=${feedback.idFeedback})}" class="btn btn-danger">Deletar</a>
+                            <div class="d-flex justify-content-center">
+                                <a th:href="@{/feedbacks/deletar/{idFeedback}(idFeedback=${feedback.idFeedback})}" class="btn btn-danger btn-sm">Deletar</a>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>    
         </div>
-        <a th:href="@{feedbacks/novo}" class="btn btn-primary">Sua opnião é importante para nós Deixe o seu Feedback</a>
+        <div class="d-flex justify-content-center mt-3">
+            <a th:href="@{feedbacks/novo}" class="btn btn-custom text-white">Sua opnião é importante para nós Deixe o seu Feedback</a>
+        </div>
+        
     </div>
 
      <!-- Footer -->

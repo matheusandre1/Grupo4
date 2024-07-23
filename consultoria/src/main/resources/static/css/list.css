@@ -19,6 +19,17 @@
   z-index: 1000;
 }
 
+.btn-custom {
+  background-color: var(--azul-escuro) !important;
+  border-color: var(--azul-escuro) !important;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: var(--azul-claro) !important;
+  border-color: var(--azul-claro) !important;
+}
+
 html{
   scroll-behavior: smooth;
 }
