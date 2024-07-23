@@ -3,17 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formulário de Feedback</title>
 
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/form.css">
 
 </head>
 <body>
+
+    <header class="mb-5">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" th:href="@{/home}">
+                <img src="/images/logo.png" width="30" height="30" alt="Logo">
+                <span>TechConsult</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class=" d-flex navbar-nav ml-auto" >
+                    <li class="nav-item"><a class="nav-link" th:href="@{/clientes}">Clientes</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/consultores}">Consultores</a></li>
+                    <li class="nav-item"><a class="nav-link" th:href="@{/consultas}">Consultas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                    <li class="nav-item"><a class=" nav-link btn-outline-danger ml-5" th:href="@{/logout}">Logout</a>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
     <div class="container mt-5">
-        <h2>Novo Feedback</h2>
+        <h1 class="mb-3">Formulário de FeedBack</h1>
         <form th:action="@{/feedbacks}" th:object="${feedbacks}" method="post">
+            <input type="hidden" th:field="*{idFeedback}"/>
             <div class="form-group">
-                <label for="clientes">Clientes:</label>
+                <label for="clientes"class="form-label">Clientes:</label>
                 <select class="form-control" id="clientes" th:field="*{idCliente}" required>
                 <option value="" selected>Selecione o Cliente</option>
                 <option th:each="cliente : ${cliente}" 
@@ -21,15 +46,44 @@
                         th:text="${cliente.nomeEmpresa}">Clientes</option>
                 </select>
             </div>
-            <div class="mb-3">
-                <label for="feedback" class="form-label">Comentário</label>
-                <textarea id="feedback" th:field="*{feedback}" class="form-control" rows="3" required></textarea>
+            <div class="form-group">
+                <label for="feedback" class="form-label">Comentário:</label>
+                <textarea id="feedback" th:field="*{feedback}" class="form-control" rows="6" required></textarea>
             </div>
-            
-            <button type="submit" class="btn btn-primary">Salvar</button>
-            <a th:href="@{/home}" class="btn btn-secondary">Cancelar</a>
+            <div class="d-flex justify-content-center ">
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <a th:href="@{/home}" class="btn btn-secondary ml-3">Cancelar</a>
+            </div>   
         </form>
     </div>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <footer class="footer" id="contato">
+        <div class=" container d-flex justify-content-around">
+            <div>
+                <h5>Contato</h5>
+                <ul class="list-unstyled">
+                    <li>Email: techconsult@tc.com</li>
+                    <li>Telefone: +55 11 1234-5678</li>
+                    <li>Endereço: Rua da Computação, nº 53. Bairro Internet</li>
+                </ul>
+            </div>
+            <div class="d-flex flex-column align-self-center">
+                <h5>Redes Sociais</h5>
+                <ul class="list-unstyled d-flex justify-content-between">
+                    <li><a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank"><img src="/images/redeSocial/facebook.png" width="20" alt="Facebook"></a></li>
+                    <li><a href="https://x.com/" target="_blank"><img src="/images/redeSocial/x.png" width="20" alt="X"></a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank"><img src="/images/redeSocial/instagram.png" width="20" alt="Instagram"></a></li>
+                    <li><a href="https://www.linkedin.com/" target="_blank"><img src="/images/redeSocial/linkedin.png" width="20" alt="LinkedIn"></a></li>
+                </ul>
+            </div>
+        </div>
+    <hr>
+    <p class="text-center">Copyright &copy 2024 Squad 4, Alguns direitos reservados.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
