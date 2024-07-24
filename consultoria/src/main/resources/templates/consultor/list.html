@@ -49,7 +49,7 @@
                 <tr th:each="consultor : ${consultores}">
                     <td th:text="${consultor.nomeConsultor}"></td>
                     <td th:text="${consultor.especializacao}"></td>
-                    <td th:text="${consultor.experiencia}"></td>
+                    <td th:text="${consultor.experiencia.length() > 30 ? consultor.experiencia.substring(0, 30) + '...' : consultor.experiencia}"></td>
                     <td th:text="${consultor.telefone}"></td>
                     <td th:text="${#dates.format(consultor.dataCadastro, 'dd/MM/yyyy HH:mm:ss')}"></td>
                     <td>

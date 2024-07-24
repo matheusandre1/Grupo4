@@ -48,7 +48,7 @@
                 <tr th:each="consulta : ${consultas}">
                     <td th:text="${consulta.consultor.nomeConsultor}"></td>
                     <td th:text="${consulta.cliente.nomeEmpresa}"></td>
-                    <td th:text="${consulta.dataConsulta}"></td>
+                    <td th:text="${#dates.format(consulta.dataConsulta, 'dd/MM/yyyy')}"></td>
                     <td th:text="${consulta.horaConsulta}"></td>
                     <td>
                         <a th:href="@{/consultas/editar/{idConsulta}(idConsulta=${consulta.idConsulta})}" class="btn btn-primary btn-sm">Editar</a>

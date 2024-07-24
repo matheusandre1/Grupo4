@@ -35,13 +35,27 @@ html{
 }
 
 div h1 {
-    margin-top: 90px;
-    margin-bottom: 25px;
-    font-family: var(--fonte-primaria);
+  font-size: 32px;
+  margin-top: 90px;
+  margin-bottom: 25px;
+  font-family: var(--fonte-primaria);
 }
 
 .container-table{
   margin-bottom: 140px;
+}
+
+.table {
+  font-size: 14px;
+}
+
+.btn-primary, .btn-secondary, .btn-danger {
+  font-size: 13px; 
+  padding: 4px 4px; 
+}
+
+.btn-success{
+  font-size: 15px;
 }
 
 .footer {
@@ -49,7 +63,6 @@ div h1 {
   padding: 20px;
   background-color: var(--azul-escuro);
   color: var(--cor-secundaria);
-
 }
 
 .footer h5{
@@ -65,8 +78,8 @@ hr{
 }
 
 @media (max-width: 450px) {
-  h1 {
-    font-size: 21px; 
+  div h1 {
+    font-size: 23px; 
   }
 
   h5 {
@@ -75,6 +88,10 @@ hr{
 
   li {
     font-size: 10px; 
+  }
+
+  .navbar-nav .btn-custom {
+    margin-left: 0 !important; /* remover margem esquerda extra */
   }
 
   .navbar-brand img {
@@ -145,6 +162,10 @@ hr{
     font-size: 13px; 
   }
 
+  .navbar-nav .btn-custom {
+    margin-left: 0 !important; /* remover margem esquerda extra */
+  }
+
   .navbar-brand img {
     width: 24px;
     height: 24px;
@@ -199,6 +220,10 @@ hr{
 @media (min-width: 710px) and (max-width: 993px) {
   .btn-sm{
     margin-bottom: 5px;
+  }
+
+  .navbar-nav .btn-custom {
+    margin-left: 0 !important; /* remover margem esquerda extra */
   }
 }
 
