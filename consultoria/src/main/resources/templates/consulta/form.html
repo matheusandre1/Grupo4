@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Agendamento</title>
 
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="/css/form.css">
 
 </head>
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -17,17 +19,18 @@
                 <img src="/images/logo.png" width="30" height="30" alt="Logo">
                 <span>TechConsult</span>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class=" d-flex navbar-nav ml-auto" >
+                <ul class=" d-flex navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" th:href="@{/clientes}">Clientes</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/consultores}">Consultores</a></li>
                     <li class="nav-item"><a class="nav-link" th:href="@{/consultas}">Consultas</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
                     <li class="nav-item"><a class=" text-white btn btn-custom ml-5" th:href="@{/logout}">Logout</a>
-                    
+
                 </ul>
             </div>
         </nav>
@@ -38,9 +41,8 @@
             <div class="form-group">
                 <label for="consultores">Consultores:</label>
                 <select class="form-control" id="consultores" th:field="*{consultor}" required>
-                <option value="" selected>Selecione o Consultor</option>
-                <option th:each="consultor : ${consultor}" 
-                        th:value="${consultor.idConsultor}" 
+                    <option value="" selected>Selecione o Consultor</option>
+                    <option th:each="consultor : ${consultor}" th:value="${consultor.idConsultor}"
                         th:text="${consultor.nomeConsultor}">Consultores</option>
                 </select>
             </div>
@@ -48,26 +50,30 @@
             <div class="form-group">
                 <label for="clientes">Clientes:</label>
                 <select class="form-control" id="clientes" th:field="*{cliente}" required>
-                <option value="" selected>Selecione o Cliente</option>
-                <option th:each="cliente : ${cliente}" 
-                        th:value="${cliente.idCliente}" 
+                    <option value="" selected>Selecione o Cliente</option>
+                    <option th:each="cliente : ${cliente}" th:value="${cliente.idCliente}"
                         th:text="${cliente.nomeResponsavel}">Clientes</option>
                 </select>
             </div>
+            
 
             <div class="form-group">
                 <label for="dataConsulta">Data:</label>
-                <input class="form-control" id="dataConsulta" type="date" name="dataConsulta" th:field="*{dataConsulta}">
+                <input class="form-control" id="dataConsulta" type="date" name="dataConsulta"
+                    th:field="*{dataConsulta}">
+                <div class="text-danger" th:if="${#fields.hasErrors('dataConsulta')}" th:errors="*{dataConsulta}"></div>
             </div>
+
 
             <div class="form-group">
                 <label for="horaConsulta">Hora:</label>
-                <input class="form-control" id="horaConsulta" type="time" name="horaConsulta" th:field="*{horaConsulta}">
+                <input class="form-control" id="horaConsulta" type="time" name="horaConsulta"
+                    th:field="*{horaConsulta}">
                 <div class="error" th:if="${#fields.hasErrors('horaConsulta')}" th:errors="*{horaConsulta}">
                     A hora deve estar no formato HH:MM (24 horas)
                 </div>
             </div>
-            
+
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-success">Agendar</button>
                 <a class="btn btn-secondary btn px-4 mx-3" th:href="@{/consultas}">Voltar</a>
@@ -87,16 +93,20 @@
             <div class="d-flex flex-column align-self-center">
                 <h5>Redes Sociais</h5>
                 <ul class="list-unstyled d-flex justify-content-between">
-                    <li><a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank"><img src="/images/redeSocial/facebook.png" width="20" alt="Facebook"></a></li>
-                    <li><a href="https://x.com/" target="_blank"><img src="/images/redeSocial/x.png" width="20" alt="X"></a></li>
-                    <li><a href="https://www.instagram.com/" target="_blank"><img src="/images/redeSocial/instagram.png" width="20" alt="Instagram"></a></li>
-                    <li><a href="https://www.linkedin.com/" target="_blank"><img src="/images/redeSocial/linkedin.png" width="20" alt="LinkedIn"></a></li>
+                    <li><a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank"><img
+                                src="/images/redeSocial/facebook.png" width="20" alt="Facebook"></a></li>
+                    <li><a href="https://x.com/" target="_blank"><img src="/images/redeSocial/x.png" width="20"
+                                alt="X"></a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank"><img src="/images/redeSocial/instagram.png"
+                                width="20" alt="Instagram"></a></li>
+                    <li><a href="https://www.linkedin.com/" target="_blank"><img src="/images/redeSocial/linkedin.png"
+                                width="20" alt="LinkedIn"></a></li>
                     <li class="nav-item"><a class=" nav-link btn-outline-danger ml-5" th:href="@{/logout}">Logout</a>
                 </ul>
             </div>
         </div>
-    <hr>
-    <p class="text-center">Copyright &copy 2024 Squad 4, Alguns direitos reservados.</p>
+        <hr>
+        <p class="text-center">Copyright &copy 2024 Squad 4, Alguns direitos reservados.</p>
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -104,6 +114,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script src="/js/validarConsulta.js"></script>
+    <script src="/js/verificadorDeData.js"></script>
 
 </body>
+
 </html>

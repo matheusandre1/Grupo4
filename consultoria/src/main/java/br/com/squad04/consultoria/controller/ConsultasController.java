@@ -56,6 +56,8 @@ public class ConsultasController {
         return "redirect:/consultas";
     }
 
+
+
     @GetMapping("/editar/{idConsulta}")
     public String showUpdateConsultaForm(@PathVariable("idConsulta") long idConsulta, Model model){
         Consultas consulta = consultasService.getConsultaById(idConsulta).orElseThrow(()-> new IllegalArgumentException("ID da Consulta Inválido: " + idConsulta));
@@ -74,4 +76,5 @@ public class ConsultasController {
         consultasService.deleteConsulta(idConsulta);
         return "redirect:/consultas";
     }
+
 }
