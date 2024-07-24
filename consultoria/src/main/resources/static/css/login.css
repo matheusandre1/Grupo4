@@ -7,23 +7,31 @@
     --azul-claro: #AFC1D0; 
     --azul-escuro: #1C3F60; 
     --verde-limao: #80FF00; 
-  
     --fonte-primaria: 'Rubik', Arial, sans-serif;
     --fonte-secundaria: 'Roboto', Arial, sans-serif;
-  }
-
-body{
-    background-color: #f0f2f5;
-    height: 100vh;
-    margin: 0;
 }
 
-.container-login{
-    
+body {
+    background-color: #f0f2f5;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-login {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 150px 0;
+    flex: 1;
 }
 
 .login-card {
@@ -43,7 +51,7 @@ body{
     margin-bottom: 20px;   
 }
 
-.informacoes p{
+.informacoes p {
     font-family: var(--fonte-secundaria);
 }
 
@@ -57,17 +65,17 @@ body{
     padding: 10px;
 }
 
-.primeiro-radio{
+.primeiro-radio {
     margin-left: 20px;
     margin-right: 5px;
 }
 
-.segundo-radio{
+.segundo-radio {
     margin-left: 20px;
     margin-right: 5px;
 }
 
-.terceiro-radio{
+.terceiro-radio {
     margin-left: 20px;
     margin-right: 5px;
 }
@@ -102,20 +110,61 @@ body{
 }
 
 .footer {
-    width: 100%;
     padding: 20px;
     background-color: var(--azul-escuro);
-    color: var(--cor-secundaria);  
+    color: var(--cor-secundaria);
+    width: 100%;
+    flex-shrink: 0;
 }
-  
-.footer h5{
+
+.footer h5 {
     font-family: var(--fonte-primaria);
 }
-  
-.footer li, .footer p{
+
+.footer li, .footer p {
     font-family: var(--fonte-secundaria);
 }
-  
-hr{
+
+hr {
     border-color: var(--cor-secundaria);
+}
+
+@media (max-width: 780px) {
+    h5 {
+        font-size: 15px; 
+    }
+
+    li {
+        font-size: 13px; 
+    }
+
+    .container-login h1 {
+        font-size: 23px;
+    }
+
+    .container-login p {
+        font-size: 16px;
+    }
+
+    .primeiro-radio, .segundo-radio, .terceiro-radio {
+        margin-left: 7px;
+        margin-right: 3px;
+    }
+
+    .footer .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer .container div {
+        margin-bottom: 20px;
+    }
+
+    .footer .container ul img {
+        width: 18px;
+    }
+
+    .footer p {
+        font-size: 12px; 
+    }
 }

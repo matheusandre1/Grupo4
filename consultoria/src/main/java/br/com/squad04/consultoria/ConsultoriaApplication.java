@@ -8,7 +8,7 @@ public class ConsultoriaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ConsultoriaApplication.class, args);
-		System.out.println("teste");
+		System.out.println("Rodando...");
 	}
 
 }
