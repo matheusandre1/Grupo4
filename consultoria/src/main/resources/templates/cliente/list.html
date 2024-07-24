@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
@@ -102,5 +102,108 @@
 <script src="/js/verificadorDeTipoDeUsuario.js"></script>
 
 
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista dos Clientes</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/list.css">
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" th:href="@{/home}">
+            <img src="/images/logo.png" width="30" height="30" alt="Logo">
+            <span>TechConsult</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class=" d-flex navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" th:href="@{/clientes}">Clientes</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/consultores}">Consultores</a></li>
+                <li class="nav-item"><a class="nav-link" th:href="@{/consultas}">Consultas</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                <li class="nav-item"><a class=" text-white btn btn-custom ml-5" th:href="@{/logout}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<div class="content-wrapper">
+    <div class="container container-table">
+        <h1 class="text-center">Lista de Clientes</h1>
+        <a th:href="@{/clientes/novo}" class="btn btn-success novo-btn">Novo Cliente</a>
+        <input id="searchInput" class="form-control mb-3" type="text" placeholder="Pesquisar por nome do cliente">
+        <table class="table table-striped mt-4">
+            <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Contato</th>
+                <th>Empresa</th>
+                <th>Data de Cadastro</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody id="clientesTable">
+            <tr th:each="cliente : ${clientes}">
+                <td th:text="${cliente.nomeResponsavel}"></td>
+                <td th:text="${cliente.email}"></td>
+                <td th:text="${cliente.telefone}"></td>
+                <td th:text="${cliente.nomeEmpresa}"></td>
+                <td th:text="${#dates.format(cliente.dataCadastro, 'dd/MM/yyyy HH:mm:ss')}"></td>
+                <td>
+                    <a th:href="@{/clientes/visualizar/{idCliente}(idCliente=${cliente.idCliente})}"
+                       class="btn btn-secondary btn-sm">Visualizar</a>
+                    <a th:href="@{/clientes/editar/{idCliente}(idCliente=${cliente.idCliente})}"
+                       class="btn btn-primary btn-sm editar-btn">Editar</a>
+                    <a th:href="@{/clientes/delete/{idCliente}(idCliente=${cliente.idCliente})}"
+                       class="btn btn-danger btn-sm deletar-btn">Deletar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<footer class="footer" id="contato">
+    <div class=" container d-flex justify-content-around">
+        <div>
+            <h5>Contato</h5>
+            <ul class="list-unstyled">
+                <li>Email: techconsult@tc.com</li>
+                <li>Telefone: +55 11 1234-5678</li>
+                <li>Endereço: Rua da Computação, nº 53. Bairro Internet</li>
+            </ul>
+        </div>
+        <div class="d-flex flex-column align-self-center">
+            <h5>Redes Sociais</h5>
+            <ul class="list-unstyled d-flex justify-content-between">
+                <li><a href="https://pt-br.facebook.com/login/device-based/regular/login/" target="_blank"><img
+                        src="/images/redeSocial/facebook.png" width="20" alt="Facebook"></a></li>
+                <li><a href="https://x.com/" target="_blank"><img src="/images/redeSocial/x.png" width="20" alt="X"></a>
+                </li>
+                <li><a href="https://www.instagram.com/" target="_blank"><img src="/images/redeSocial/instagram.png" width="20" alt="Instagram"></a></li>
+                <li><a href="https://www.linkedin.com/" target="_blank"><img src="/images/redeSocial/linkedin.png" width="20" alt="LinkedIn"></a></li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <p class="text-center">Copyright &copy 2024 Squad 4, Alguns direitos reservados.</p>
+</footer>
+
+<script src="/js/pesquisaCliente.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="/js/verificadorDeTipoDeUsuario.js"></script>
 </body>
 </html>
