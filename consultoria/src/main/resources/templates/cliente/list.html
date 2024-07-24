@@ -35,7 +35,8 @@
 </header>
 <div class="container container-table">
     <h1 class="text-center">Lista de Clientes</h1>
-
+    <a th:href="@{/clientes/novo}" class="btn btn-success novo-btn">Novo Cliente</a>
+    <input id="searchInput" class="form-control mb-3" type="text" placeholder="Pesquisar por nome do cliente">
     <table class="table table-striped mt-4">
         <thead>
         <tr>
@@ -47,7 +48,7 @@
             <th>Ações</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="clientesTable">
         <tr th:each="cliente : ${clientes}">
             <td th:text="${cliente.nomeResponsavel}"></td>
             <td th:text="${cliente.email}"></td>
@@ -65,7 +66,7 @@
         </tr>
         </tbody>
     </table>
-    <a th:href="@{/clientes/novo}" class="btn btn-success novo-btn">Novo Cliente</a>
+
 </div>
 
 <footer class="footer" id="contato">
@@ -94,6 +95,7 @@
     <p class="text-center">Copyright &copy 2024 Squad 4, Alguns direitos reservados.</p>
 </footer>
 
+<script src="/js/pesquisaCliente.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

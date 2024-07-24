@@ -6,19 +6,6 @@ CREATE TABLE "usuarios" (
     "senha" varchar(100) NOT NULL
 );
 
-CREATE TABLE "clientes" (
-    "id_cliente" serial PRIMARY KEY,
-    "nome_empresa" varchar(100) NOT NULL UNIQUE,
-    "nome_responsavel" varchar(100) NOT NULL,
-    "cnpj" varchar(18) NOT NULL UNIQUE,
-    "data_cadastro" timestamp NOT NULL,
-    "telefone" varchar(15) NOT NULL,
-    "email" varchar(100) NOT NULL UNIQUE,
-    "senha" varchar(300) NOT NULL,
-    "tipo_de_usuario" varchar(9),
-    "id_consultor" int NOT NULL
-);
-
 CREATE TABLE "consultores" (
     "id_consultor" serial PRIMARY KEY,
     "nome_consultor" varchar (50),
@@ -29,7 +16,21 @@ CREATE TABLE "consultores" (
     "senha" varchar(300) NOT NULL,
     "especializacao" varchar(500),
     "experiencia" varchar(1000),
-    "tipo_de_usuario" varchar(09)
+    "tipo_de_usuario" varchar(9)
+);
+
+CREATE TABLE "clientes" (
+    "id_cliente" serial PRIMARY KEY,
+    "nome_empresa" varchar(100) NOT NULL UNIQUE,
+    "nome_responsavel" varchar(100) NOT NULL,
+    "cnpj" varchar(18) NOT NULL UNIQUE,
+    "data_cadastro" timestamp NOT NULL,
+    "telefone" varchar(15) NOT NULL,
+    "email" varchar(100) NOT NULL UNIQUE,
+    "senha" varchar(300) NOT NULL,
+    "tipo_de_usuario" varchar(9),
+    "id_consultor" int NOT NULL,
+    CONSTRAINT fk_consultor FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor") ON DELETE CASCADE
 );
 
 CREATE TABLE "consultas" (
@@ -37,38 +38,28 @@ CREATE TABLE "consultas" (
     "data_consulta" date NOT NULL,
     "hora_consulta" varchar(6) NOT NULL,
     "id_cliente" int NOT NULL,
-    "id_consultor" int NOT NULL
+    "id_consultor" int NOT NULL,
+    CONSTRAINT fk_cliente_consulta FOREIGN KEY ("id_cliente") REFERENCES "clientes" ("id_cliente") ON DELETE CASCADE,
+    CONSTRAINT fk_consultor_consulta FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor") ON DELETE CASCADE
 );
 
 CREATE TABLE "relatorio_de_consultoria" (
     "id_relatorio_de_consultoria" serial PRIMARY KEY,
     "id_consulta" int NOT NULL,
     "id_cliente" int NOT NULL,
-    "id_consultor" int NOT NULL
+    "id_consultor" int NOT NULL,
+    CONSTRAINT fk_cliente_relatorio FOREIGN KEY ("id_cliente") REFERENCES "clientes" ("id_cliente") ON DELETE CASCADE,
+    CONSTRAINT fk_consultor_relatorio FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor") ON DELETE CASCADE,
+    CONSTRAINT fk_consulta_relatorio FOREIGN KEY ("id_consulta") REFERENCES "consultas" ("id_consulta") ON DELETE CASCADE
 );
 
 CREATE TABLE "feedbacks" (
     "id_feedback" serial PRIMARY KEY,
     "id_cliente" int NOT NULL,
     "data_feedback" timestamp NOT NULL,
-    "feedback" varchar(1000)
+    "feedback" varchar(1000),
+    CONSTRAINT fk_cliente_feedback FOREIGN KEY ("id_cliente") REFERENCES "clientes" ("id_cliente") ON DELETE CASCADE
 );
-
--- Adicionar chaves estrangeiras
-ALTER TABLE "clientes" ADD FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor");
-
-ALTER TABLE "consultas" ADD FOREIGN KEY ("id_cliente") REFERENCES "clientes" ("id_cliente");
-
-ALTER TABLE "consultas" ADD FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor");
-
-ALTER TABLE "relatorio_de_consultoria" ADD FOREIGN KEY ("id_cliente") REFERENCES "clientes" ("id_cliente");
-
-ALTER TABLE "relatorio_de_consultoria" ADD FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor");
-
-ALTER TABLE "relatorio_de_consultoria" ADD FOREIGN KEY ("id_consulta") REFERENCES "consultas" ("id_consulta");
-
-ALTER TABLE "feedbacks" ADD FOREIGN KEY ("id_cliente") REFERENCES "clientes" ("id_cliente");
-
 
 --Criando usuarios consultores
 

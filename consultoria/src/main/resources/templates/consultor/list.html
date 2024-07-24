@@ -33,6 +33,7 @@
     </header>
     <div class="container container-table">
         <h1 class="text-center">Lista de Consultores</h1>
+        <a th:href="@{/consultores/novo}" class="btn btn-success novo-btn">Novo Consultor</a>
         <input id="searchInput" class="form-control mb-3" type="text" placeholder="Pesquisar por nome do consultor">
         <table class="table table-striped mt-4">
             <thead>
@@ -45,6 +46,7 @@
                     <th>Ações</th>
                 </tr>
             </thead>
+
             <tbody id="consultoresTable">
                 <tr th:each="consultor : ${consultores}">
                     <td th:text="${consultor.nomeConsultor}"></td>
@@ -60,7 +62,7 @@
                 </tr>
             </tbody>
         </table>
-        <a th:href="@{/consultores/novo}" class="btn btn-success novo-btn">Novo Consultor</a>
+
     </div>
 
     <footer class="footer" id="contato">

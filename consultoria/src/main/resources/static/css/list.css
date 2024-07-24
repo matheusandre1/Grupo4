@@ -77,6 +77,11 @@ hr{
   border-color: var(--cor-secundaria);
 }
 
+#searchInput{
+  margin-top: 1rem;
+}
+
+
 @media (max-width: 450px) {
   div h1 {
     font-size: 23px; 
