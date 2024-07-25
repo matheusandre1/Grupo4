@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.squad04.consultoria.model.Consultas;
@@ -15,7 +16,7 @@ public class ConsultasService {
     private ConsultasRepository consultasRepository;
 
     public List<Consultas> getAllConsultas(){
-        return consultasRepository.findAll();
+        return consultasRepository.findAll(Sort.by(Sort.Direction.ASC, "idConsulta"));
     }
 
     public Optional<Consultas> getConsultaById(long idConsulta){

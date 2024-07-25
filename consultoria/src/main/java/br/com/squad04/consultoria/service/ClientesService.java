@@ -1,10 +1,10 @@
 package br.com.squad04.consultoria.service;
 
-
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.squad04.consultoria.model.Clientes;
@@ -16,7 +16,7 @@ public class ClientesService {
     private ClientesRepository clientesRepository;
 
     public List<Clientes> getAllClientes() {
-        return clientesRepository.findAll();
+        return clientesRepository.findAll(Sort.by(Sort.Direction.ASC, "idCliente"));
     }
 
     public Optional<Clientes> getClienteById(Long idCliente) {

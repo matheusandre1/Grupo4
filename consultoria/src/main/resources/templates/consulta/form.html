@@ -39,6 +39,7 @@
         <h1 class="mb-3">Formulário de Agendamento</h1>
         <form th:action="@{/consultas}" th:object="${consultas}" method="post">
             <div class="form-group">
+                <input type="hidden" th:field="*{idConsulta}" />
                 <label for="consultores">Consultores:</label>
                 <select class="form-control" id="consultores" th:field="*{consultor}" required>
                     <option value="" selected>Selecione o Consultor</option>
