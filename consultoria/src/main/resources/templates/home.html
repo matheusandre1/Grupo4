@@ -264,12 +264,12 @@
                         </div>
                         <div class="card-body bg-light">
                             <p class="card-text" th:text="${feedback.feedback}"></p>
-                            <div class="d-flex justify-content-center">
-                                <a th:href="@{/feedbacks/deletar/{idFeedback}(idFeedback=${feedback.idFeedback})}" class="btn btn-danger btn-sm">Deletar</a>
-                            </div>
-                            
+                        </div>
+                        <div class="card-footer text-center">
+                            <a th:href="@{/feedbacks/deletar/{idFeedback}(idFeedback=${feedback.idFeedback})}" class="btn btn-danger btn-sm">Deletar</a>
                         </div>
                     </div>
+                    
                 </div>
             </div>    
         </div>

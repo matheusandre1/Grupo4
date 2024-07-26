@@ -43,11 +43,12 @@ CREATE TABLE "consultas" (
     CONSTRAINT fk_consultor_consulta FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor") ON DELETE CASCADE
 );
 
-CREATE TABLE "relatorio_de_consultoria" (
-    "id_relatorio_de_consultoria" serial PRIMARY KEY,
+CREATE TABLE "relatorios" (
+    "id_relatorio" serial PRIMARY KEY,
     "id_consulta" int NOT NULL,
     "id_cliente" int NOT NULL,
     "id_consultor" int NOT NULL,
+    "relatorio" varchar(1000) NOT NULL,
     CONSTRAINT fk_cliente_relatorio FOREIGN KEY ("id_cliente") REFERENCES "clientes" ("id_cliente") ON DELETE CASCADE,
     CONSTRAINT fk_consultor_relatorio FOREIGN KEY ("id_consultor") REFERENCES "consultores" ("id_consultor") ON DELETE CASCADE,
     CONSTRAINT fk_consulta_relatorio FOREIGN KEY ("id_consulta") REFERENCES "consultas" ("id_consulta") ON DELETE CASCADE

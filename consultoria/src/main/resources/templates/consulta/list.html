@@ -35,6 +35,7 @@
             <table class="table table-striped mt-4">
                 <thead>
                     <tr>
+                        <th>Nº da Consulta</th>
                         <th>Consultor</th>
                         <th>Cliente</th>
                         <th>Data de Agendamento</th>
@@ -44,6 +45,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="consulta : ${consultas}">
+                        <td th:text="${consulta.idConsulta}"></td>
                         <td th:text="${consulta.consultor.nomeConsultor}"></td>
                         <td th:text="${consulta.cliente.nomeEmpresa}"></td>
                         <td th:text="${#dates.format(consulta.dataConsulta, 'dd/MM/yyyy')}"></td>
@@ -55,6 +57,34 @@
                     </tr>
                 </tbody>
             </table>
+
+            <div class="container container-table">
+                <h1 class="text-center">Relatorios das Consultas</h1>
+                <a th:href="@{/relatorios/novo}" class="btn btn-success">Novo Relatório</a>
+                <table class="table table-striped mt-4">
+                    <thead>
+                        <tr>
+                            <th>Nº da Consulta</th>
+                            <th>Consultor</th>
+                            <th>Cliente</th>
+                            <th>Relatório da Consulta</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="relatorio : ${relatorios}">
+                            <td th:text="${relatorio.idConsulta.idConsulta}"></td>
+                            <td th:text="${relatorio.idConsultor.nomeConsultor}"></td>
+                            <td th:text="${relatorio.idCliente.nomeEmpresa}"></td>
+                            <td th:text="${relatorio.relatorio}"></td>
+                            <td>
+                                <a th:href="@{/relatorios/visualizar/{idRelatorio}(idRelatorio=${relatorio.idRelatorio})}" class="btn btn-secondary btn-sm">Visualizar</a>
+                                <a th:href="@{/relatorios/delete/{idRelatorio}(idRelatorio=${relatorio.idRelatorio})}" class="btn btn-danger btn-sm">Deletar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <footer class="footer" id="contato">

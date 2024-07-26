@@ -25,6 +25,10 @@ html, body {
   flex-direction: column;
 }
 
+.container-table{
+  margin-bottom: 60px;
+}
+
 .navbar {
   position: fixed;
   top: 0;
